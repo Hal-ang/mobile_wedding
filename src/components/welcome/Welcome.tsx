@@ -6,7 +6,7 @@ import Text from "../Text";
 const Welcome = () => {
   return (
     <div className="h-screen bg-white w-full flex flex-col justify-between">
-      <Flex className={`mt-44pxr`} direction="column">
+      <Flex className={`mt-44pxr`}>
         {["THE", "WEDDING", "OF", "TAEHOON", "AND", "DANHEE"].map(
           (text, index) => (
             <Text
@@ -18,10 +18,7 @@ const Welcome = () => {
             </Text>
           )
         )}
-        <Flex
-          className={`text-15pxr leading-18pxr mt-16pxr`}
-          direction="column"
-        >
+        <Flex className={`text-15pxr leading-18pxr mt-16pxr`}>
           <Text display="block">2024.06.08, SATURDAY 16:00</Text>
           <Text display="block" className="mt-8pxr">
             SAMCHEONGGAK

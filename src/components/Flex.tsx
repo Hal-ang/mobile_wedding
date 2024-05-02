@@ -20,7 +20,7 @@ const Flex = forwardRef(
     {
       children,
       as: As = "div",
-      direction = "row",
+      direction = "column",
       align = "center",
       justify = "center",
       ...rest
