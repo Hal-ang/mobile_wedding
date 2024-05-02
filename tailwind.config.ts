@@ -21,6 +21,7 @@ const config: Config = {
   theme: {
     extend: {
       spacing: extendedPxr,
+      lineHeight: extendedPxr,
       fontSize: extendedPxr,
       minHeight: extendedPxr,
       borderRadius: extendedPxr,

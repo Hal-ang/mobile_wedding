@@ -16,8 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={BonVivantFont.className}>{children}</body>
+    <html lang="ko">
+      <body className={PretendardFont.className + " text-black"}>
+        {children}
+      </body>
     </html>
   );
 }
