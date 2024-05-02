@@ -26,11 +26,13 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@types/lodash", "npm:4.17.0"],\
           ["@types/node", "npm:20.12.8"],\
           ["@types/react", "npm:18.3.1"],\
           ["@types/react-dom", "npm:18.3.0"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
+          ["lodash", "npm:4.17.21"],\
           ["next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
           ["postcss", "npm:8.4.38"],\
           ["react", "npm:18.3.1"],\
@@ -421,6 +423,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/@types-json5-npm-0.0.29-f63a7916bd-10c0.zip/node_modules/@types/json5/",\
         "packageDependencies": [\
           ["@types/json5", "npm:0.0.29"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/lodash", [\
+      ["npm:4.17.0", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-lodash-npm-4.17.0-11e757616b-10c0.zip/node_modules/@types/lodash/",\
+        "packageDependencies": [\
+          ["@types/lodash", "npm:4.17.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2977,6 +2988,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["lodash", [\
+      ["npm:4.17.21", {\
+        "packageLocation": "../../.yarn/berry/cache/lodash-npm-4.17.21-6382451519-10c0.zip/node_modules/lodash/",\
+        "packageDependencies": [\
+          ["lodash", "npm:4.17.21"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["lodash.merge", [\
       ["npm:4.6.2", {\
         "packageLocation": "../../.yarn/berry/cache/lodash.merge-npm-4.6.2-77cb4416bf-10c0.zip/node_modules/lodash.merge/",\
@@ -3191,11 +3211,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["mobile_wedding", "workspace:."],\
+          ["@types/lodash", "npm:4.17.0"],\
           ["@types/node", "npm:20.12.8"],\
           ["@types/react", "npm:18.3.1"],\
           ["@types/react-dom", "npm:18.3.0"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
+          ["lodash", "npm:4.17.21"],\
           ["next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
           ["postcss", "npm:8.4.38"],\
           ["react", "npm:18.3.1"],\
