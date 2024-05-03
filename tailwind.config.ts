@@ -19,6 +19,11 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
+    screens: {
+      medium: "360px",
+      regular: "390px",
+      large: "430px"
+    },
     extend: {
       spacing: extendedPxr,
       lineHeight: extendedPxr,

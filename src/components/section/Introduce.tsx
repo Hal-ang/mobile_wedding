@@ -6,7 +6,7 @@ import Text from "../Text";
 const CrossTitle = () => {
   return (
     <div
-      className={`${BonVivantFont.className} text-81pxr leading-71pxr mt-12pxr w-full`}
+      className={`${BonVivantFont.className} text-88pxr leading-71pxr mt-12pxr w-full`}
     >
       <Text display="block" style={{ transform: "translate(-12px)" }}>
         NEVER
@@ -34,7 +34,7 @@ const CrossTitle = () => {
       <Text
         display="block"
         className="text-right"
-        style={{ transform: "translate(12px)" }}
+        style={{ transform: "translate(auto)" }}
       >
         GLADNESS
       </Text>

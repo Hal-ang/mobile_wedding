@@ -12,7 +12,7 @@ const Welcome = () => {
             <Text
               key={index}
               display="block"
-              className={`text-55pxr leading-48pxr ${BonVivantFont.className}`}
+              className={`text-50pxr leading-42pxr medium:text-55pxr medium:leading-48pxr regular:text-60pxr regular:leading-54pxr large:text-66pxr large:leading-66pxr   ${BonVivantFont.className}`}
             >
               {text}
             </Text>
