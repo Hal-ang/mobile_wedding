@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={PretendardFont.className + " text-black"}>
+      <body className={PretendardFont.className + " text-black font-normal"}>
         {children}
       </body>
     </html>

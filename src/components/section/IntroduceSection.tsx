@@ -45,7 +45,7 @@ const CrossTitle = () => {
   );
 };
 
-const Introduce = () => {
+const IntroduceSection = () => {
   return (
     <div className="w-full">
       <CrossTitle />
@@ -68,4 +68,4 @@ const Introduce = () => {
   );
 };
 
-export default Introduce;
+export default IntroduceSection;

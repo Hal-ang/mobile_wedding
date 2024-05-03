@@ -33,6 +33,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "npm:18.3.0"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
+          ["jotai", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:2.8.0"],\
           ["lodash", "npm:4.17.21"],\
           ["next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
           ["postcss", "npm:8.4.38"],\
@@ -6074,6 +6075,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["jotai", [\
+      ["npm:2.8.0", {\
+        "packageLocation": "../../.yarn/berry/cache/jotai-npm-2.8.0-6ad70014ec-10c0.zip/node_modules/jotai/",\
+        "packageDependencies": [\
+          ["jotai", "npm:2.8.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:2.8.0", {\
+        "packageLocation": "./.yarn/__virtual__/jotai-virtual-bc6dbf9e44/3/.yarn/berry/cache/jotai-npm-2.8.0-6ad70014ec-10c0.zip/node_modules/jotai/",\
+        "packageDependencies": [\
+          ["jotai", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:2.8.0"],\
+          ["@types/react", "npm:18.3.1"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["js-tokens", [\
       ["npm:4.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/js-tokens-npm-4.0.0-0ac852e9e2-10c0.zip/node_modules/js-tokens/",\
@@ -6532,6 +6555,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "npm:18.3.0"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
+          ["jotai", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:2.8.0"],\
           ["lodash", "npm:4.17.21"],\
           ["next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
           ["postcss", "npm:8.4.38"],\
