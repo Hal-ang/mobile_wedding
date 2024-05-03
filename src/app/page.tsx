@@ -1,11 +1,13 @@
 import Introduce from "@/components/section/Introduce";
+import Spacing from "@/components/Spacing";
 import Welcome from "@/components/welcome/Welcome";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between overflow-x-hidden ">
       {/* <Welcome /> */}
-      <Introduce></Introduce>
+      <Introduce />
+      <Spacing size={100} />
     </main>
   );
 }
