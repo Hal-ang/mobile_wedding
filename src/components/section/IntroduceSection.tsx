@@ -1,6 +1,7 @@
 import { BonVivantFont } from "@/style/fonts";
 import Flex from "../Flex";
 import Glare from "../../../public/glare/glare.svg";
+import Image from "next/image";
 import React from "react";
 import Text from "../Text";
 
@@ -47,7 +48,14 @@ const CrossTitle = () => {
 
 const IntroduceSection = () => {
   return (
-    <div className="w-full">
+    <section id="introduce" className="w-full relative">
+      <Image
+        src={"/gradient.png"}
+        layout="fill"
+        objectFit="cover"
+        alt="gradient"
+        className="absolute top-0 left-0 w-full h-full -z-10"
+      />
       <CrossTitle />
       <Flex align="start" className="gap-20pxr px-24pxr mt-10pxr">
         {[
@@ -64,7 +72,7 @@ const IntroduceSection = () => {
           </Text>
         ))}
       </Flex>
-    </div>
+    </section>
   );
 };
 

@@ -1,11 +1,54 @@
+"use client";
+
+import React, { useCallback, useEffect, useRef, useState } from "react";
+
 import { BonVivantFont } from "@/style/fonts";
 import Flex from "../Flex";
-import React from "react";
+import ScrollArrow from "../../../public/scroll_arrow.svg";
 import Text from "../Text";
 
 const Welcome = () => {
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        } else {
+          setIsInView(false);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(ref.current);
+  }, []);
+
+  useEffect(() => {
+    const $body = document.querySelector("body");
+    if (!$body) return;
+
+    if (isInView) {
+      $body.style.overflow = "hidden";
+      scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      $body.style.overflow = "auto";
+    }
+  }, [isInView]);
+
+  const handleScroll = useCallback(() => {
+    const $introduce = document.getElementById("introduce");
+    if (!$introduce) return;
+    scrollTo({ top: $introduce.offsetTop, behavior: "smooth" });
+  }, []);
+
   return (
-    <div className="h-screen bg-white w-full flex flex-col justify-between">
+    <div
+      ref={ref}
+      className="h-screen bg-white w-full flex flex-col justify-between overflow-hidden"
+    >
       <Flex className={`mt-44pxr`}>
         {["THE", "WEDDING", "OF", "TAEHOON", "AND", "DANHEE"].map(
           (text, index) => (
@@ -25,9 +68,10 @@ const Welcome = () => {
           </Text>
         </Flex>
       </Flex>
-      <button className="mb-40pxr text-white bg-black w-40pxr h-40pxr mx-auto rounded-full">
-        홋
-      </button>
+      <ScrollArrow
+        onClick={handleScroll}
+        className="flex-none mb-40pxr cursor-pointer mx-auto"
+      />
     </div>
   );
 };
