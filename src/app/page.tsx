@@ -2,6 +2,7 @@ import AccountSection from "@/components/section/AccountSection";
 import AddressSection from "@/components/section/AddressSection";
 import CalendarSection from "@/components/section/CalendarSection";
 import CoupleSection from "@/components/section/CoupleSection";
+import FooterSection from "@/components/section/FooterSection";
 import IntroduceSection from "@/components/section/IntroduceSection";
 import RollingBanner from "@/components/RollingBanner";
 import Spacing from "@/components/Spacing";
@@ -22,6 +23,8 @@ export default function Home() {
       <RollingBanner />
       <Spacing size={80} />
       <AccountSection />
+      <Spacing size={100} />
+      <FooterSection />
     </main>
   );
 }
