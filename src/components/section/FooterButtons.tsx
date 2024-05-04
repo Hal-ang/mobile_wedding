@@ -11,6 +11,7 @@ const FooterButtons = () => {
   const { show } = useToast();
 
   const handleCopyLink = useCallback(() => {
+    if (typeof window === "undefined") return;
     copy(window.location.href);
     show("URL 링크가 복사되었습니다.");
   }, []);
@@ -18,11 +19,12 @@ const FooterButtons = () => {
   const handleKakaoShare = useCallback(() => {
     if (confirm("다른 앱으로 이 페이지를 열겠습니까?")) {
       // 카카오톡 공유 로직
+      if (typeof window === "undefined") return;
       window.Kakao.Share.sendScrap({
         requestUrl: window.location.href
       });
     }
-  }, [window.location.href]);
+  }, []);
 
   return (
     <>
