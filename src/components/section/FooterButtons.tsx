@@ -2,6 +2,7 @@
 
 import React, { useCallback } from "react";
 
+import KaKaoShare from "../KaKaoShare";
 import ShareButton from "../ShareButton";
 import Spacing from "../Spacing";
 import copy from "copy-to-clipboard";
@@ -10,19 +11,13 @@ import { useToast } from "../toast/ToastProvider";
 const FooterButtons = () => {
   const { show } = useToast();
 
-  const handleKakaoShare = useCallback(() => {
-    if (confirm("다른 앱으로 이 페이지를 열겠습니까?")) {
-      // 카카오톡 공유 로직
-    }
-  }, []);
-
   const handleCopyLink = useCallback(() => {
     copy(window.location.href);
     show("URL 링크가 복사되었습니다.");
   }, []);
   return (
     <>
-      <ShareButton text="카카오톡 공유하기" onClick={handleKakaoShare} />
+      <KaKaoShare url={window.location.href} />
       <Spacing size={6} />
       <ShareButton text="링크 복사하기" onClick={handleCopyLink} />
     </>
