@@ -1,8 +1,11 @@
+"use client";
+
+import React, { useEffect, useRef } from "react";
+
 import { BonVivantFont } from "@/style/fonts";
 import Flex from "../Flex";
 import Glare from "../../../public/glare/glare.svg";
 import Image from "next/image";
-import React from "react";
 import Text from "../Text";
 
 const CrossTitle = () => {
@@ -47,8 +50,24 @@ const CrossTitle = () => {
 };
 
 const IntroduceSection = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          scrollTo({ top: ref.current?.offsetTop, behavior: "smooth" });
+        } else {
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(ref.current);
+  }, []);
+
   return (
-    <section id="introduce" className="w-full relative">
+    <section ref={ref} id="introduce" className="w-full relative">
       <Image
         src={"/gradient.png"}
         layout="fill"

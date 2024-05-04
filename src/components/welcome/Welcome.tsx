@@ -33,7 +33,6 @@ const Welcome = () => {
     if (!$body) return;
 
     if (isInView) {
-      $body.style.overflow = "hidden";
       scrollTo({ top: 0, behavior: "smooth" });
     } else {
       $body.style.overflow = "auto";
@@ -46,12 +45,15 @@ const Welcome = () => {
     scrollTo({ top: $introduce.offsetTop, behavior: "smooth" });
   }, []);
 
+
+
   const { width } = useResize();
 
   return (
     <div
       ref={ref}
-      className="relative h-screen bg-white w-full flex flex-col justify-between overflow-hidden"
+      style={{ height: "100svh" }}
+      className="relative  bg-white w-full flex flex-col justify-between overflow-hidden"
     >
       {width < 390 ? (
         <Image
