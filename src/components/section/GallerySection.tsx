@@ -1,5 +1,7 @@
 "use client";
 
+import "swiper/css";
+
 import React, {
   startTransition,
   useEffect,
@@ -8,11 +10,13 @@ import React, {
   useState
 } from "react";
 
+import ImageDetails from "../ImageDetails";
 import ProgressBar from "./ProgressBar";
 import Spacing from "../Spacing";
 import Title from "./Title";
 import { getContentHeight } from "@/utils";
 import useResize from "@/hooks/useResize";
+import { useRouter } from "next/navigation";
 
 const IMAGES = [
   {
@@ -100,6 +104,9 @@ const GallerySection = () => {
   }, [selectedImage]);
 
   const [progressPercent, setProgressPercent] = useState(0);
+  const router = useRouter();
+
+  const [visibleModal, setVisibleModal] = useState(false);
 
   return (
     <section className="w-full ">
@@ -108,8 +115,12 @@ const GallerySection = () => {
         <Spacing size={10} />
 
         <div
-          className="w-full bg-gray-300"
+          className="w-full bg-gray-300 cursor-pointer"
           style={{ height: viewerSize.height }}
+          onClick={() => {
+            // router.push("/");
+            setVisibleModal(true);
+          }}
         ></div>
         <Spacing size={16} />
         <ProgressBar width={`${progressPercent}%`} />
@@ -161,6 +172,16 @@ const GallerySection = () => {
           </div>
         ))}
       </div>
+      {visibleModal && (
+        <ImageDetails
+          onClose={() => {
+            // router.back();
+            setVisibleModal(false);
+          }}
+          images={IMAGES}
+          selectedIndex={selectedImage}
+        />
+      )}
     </section>
   );
 };
