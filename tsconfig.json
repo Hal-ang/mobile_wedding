@@ -23,6 +23,7 @@
   },
   "include": [
     "svgr.d.ts",
+    "global.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",

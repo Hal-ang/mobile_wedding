@@ -128,6 +128,17 @@ const GallerySection = () => {
             setProgressPercent((scrolledWidth / target.scrollWidth) * 100);
           });
         }}
+        onDrag={(e) => {
+          e.stopPropagation();
+
+          const target = e.currentTarget;
+
+          const scrolledWidth = target.scrollLeft + target.offsetWidth;
+
+          startTransition(() => {
+            setProgressPercent((scrolledWidth / target.scrollWidth) * 100);
+          });
+        }}
         className="flex flex-row flex-nowrap gap-4pxr overflow-y-scroll px-24pxr"
       >
         {IMAGES.map((image, index) => (
