@@ -1,5 +1,6 @@
 "use client";
 
+import Account from "./Account";
 import Arcodion from "../Arcodion";
 import Flex from "../Flex";
 import React from "react";
@@ -18,13 +19,15 @@ const AccountSection = () => {
           <Arcodion.Arrow />
         </Arcodion.Header>
         <Arcodion.Content>
-          <Flex>
-            <Flex>
-              <Text>구태훈</Text>
-              <Text>신한은행 110-123</Text>
-            </Flex>
-            <button>복사</button>
-          </Flex>
+          <Account
+            name="구태훈"
+            bankInfo={{ bankName: "신한은행", accountNumber: "110-123-45678" }}
+          />
+          <Spacing size={1} />
+          <Account
+            name="구태훈"
+            bankInfo={{ bankName: "신한은행", accountNumber: "110-123-45678" }}
+          />
         </Arcodion.Content>
       </Arcodion>
       <Spacing size={20} />
@@ -34,13 +37,15 @@ const AccountSection = () => {
           <Arcodion.Arrow />
         </Arcodion.Header>
         <Arcodion.Content>
-          <Flex>
-            <Flex>
-              <Text>구태훈</Text>
-              <Text>신한은행 110-123</Text>
-            </Flex>
-            <button>복사</button>
-          </Flex>
+          <Account
+            name="구태훈"
+            bankInfo={{ bankName: "신한은행", accountNumber: "110-123-45678" }}
+          />
+          <Spacing size={1} />
+          <Account
+            name="구태훈"
+            bankInfo={{ bankName: "신한은행", accountNumber: "110-123-45678" }}
+          />
         </Arcodion.Content>
       </Arcodion>
     </section>
