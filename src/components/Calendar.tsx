@@ -33,7 +33,10 @@ Calendar.Dates = ({
     const isActive = i + startDate === activeDate;
 
     return (
-      <div className={`w-full  text-center flex justify-center items-center `}>
+      <div
+        key={i}
+        className={`w-full  text-center flex justify-center items-center `}
+      >
         <Text
           display="block"
           className={`w-40pxr py-7.5pxr items-center flex justify-center ${
