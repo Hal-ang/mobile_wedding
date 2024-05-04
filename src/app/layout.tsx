@@ -1,9 +1,8 @@
 import "./globals.css";
 
-import { BonVivantFont, PretendardFont } from "@/style/fonts";
-
-import { Inter } from "next/font/google";
 import type { Metadata } from "next";
+import { PretendardFont } from "@/style/fonts";
+import { ToastProvider } from "@/components/toast/ToastProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +17,8 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={PretendardFont.className + " text-black font-normal"}>
-        {children}
+        <ToastProvider>{children}</ToastProvider>
+        <div id="portal"></div>
       </body>
     </html>
   );

@@ -12,16 +12,16 @@ const RollingBanner = () => {
       <div className="slide-container text-white bg-black py-10pxr text-14pxr leading-25pxr will-change-auto">
         <ul className="slide-wrapper will-change-auto">
           <div className="slide-original will-change-auto">
-            {BANNERS.map((banner) => (
-              <Fragment key={banner}>
+            {BANNERS.map((banner, i) => (
+              <Fragment key={i}>
                 <Glare className="flex-none inline" />
                 <Text>{banner}</Text>
               </Fragment>
             ))}
           </div>
           <div className="slide-clone will-change-auto">
-            {BANNERS.map((banner) => (
-              <Fragment key={banner}>
+            {BANNERS.map((banner, i) => (
+              <Fragment key={i}>
                 <Glare className="flex-none inline" />
                 <Text>{banner}</Text>
               </Fragment>

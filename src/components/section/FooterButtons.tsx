@@ -5,8 +5,11 @@ import React, { useCallback } from "react";
 import ShareButton from "../ShareButton";
 import Spacing from "../Spacing";
 import copy from "copy-to-clipboard";
+import { useToast } from "../toast/ToastProvider";
 
 const FooterButtons = () => {
+  const { show } = useToast();
+
   const handleKakaoShare = useCallback(() => {
     if (confirm("다른 앱으로 이 페이지를 열겠습니까?")) {
       // 카카오톡 공유 로직
@@ -15,6 +18,7 @@ const FooterButtons = () => {
 
   const handleCopyLink = useCallback(() => {
     copy(window.location.href);
+    show("계좌번호가 복사되었어요");
     // TODO : 토스트
   }, []);
   return (
