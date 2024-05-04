@@ -31,6 +31,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.12.8"],\
           ["@types/react", "npm:18.3.1"],\
           ["@types/react-dom", "npm:18.3.0"],\
+          ["@types/react-slick", "npm:0.23.13"],\
           ["copy-to-clipboard", "npm:3.3.3"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
@@ -40,6 +41,7 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.4.38"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:18.3.1"],\
+          ["react-slick", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:0.30.2"],\
           ["tailwindcss", "npm:3.4.3"],\
           ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
         ],\
@@ -3337,6 +3339,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/react-slick", [\
+      ["npm:0.23.13", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-react-slick-npm-0.23.13-ad62d6348a-10c0.zip/node_modules/@types/react-slick/",\
+        "packageDependencies": [\
+          ["@types/react-slick", "npm:0.23.13"],\
+          ["@types/react", "npm:18.3.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@typescript-eslint/parser", [\
       ["npm:7.2.0", {\
         "packageLocation": "../../.yarn/berry/cache/@typescript-eslint-parser-npm-7.2.0-6d77f6601f-10c0.zip/node_modules/@typescript-eslint/parser/",\
@@ -4043,6 +4055,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["classnames", [\
+      ["npm:2.5.1", {\
+        "packageLocation": "../../.yarn/berry/cache/classnames-npm-2.5.1-c7273f3423-10c0.zip/node_modules/classnames/",\
+        "packageDependencies": [\
+          ["classnames", "npm:2.5.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["clean-stack", [\
       ["npm:2.2.0", {\
         "packageLocation": "../../.yarn/berry/cache/clean-stack-npm-2.2.0-a8ce435a5c-10c0.zip/node_modules/clean-stack/",\
@@ -4549,6 +4570,15 @@ const RAW_RUNTIME_STATE =
           ["enhanced-resolve", "npm:5.16.0"],\
           ["graceful-fs", "npm:4.2.11"],\
           ["tapable", "npm:2.2.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["enquire.js", [\
+      ["npm:2.1.6", {\
+        "packageLocation": "../../.yarn/berry/cache/enquire.js-npm-2.1.6-fc4ea2e583-10c0.zip/node_modules/enquire.js/",\
+        "packageDependencies": [\
+          ["enquire.js", "npm:2.1.6"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6188,6 +6218,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["json2mq", [\
+      ["npm:0.2.0", {\
+        "packageLocation": "../../.yarn/berry/cache/json2mq-npm-0.2.0-aa8a6516b9-10c0.zip/node_modules/json2mq/",\
+        "packageDependencies": [\
+          ["json2mq", "npm:0.2.0"],\
+          ["string-convert", "npm:0.2.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["json5", [\
       ["npm:1.0.2", {\
         "packageLocation": "../../.yarn/berry/cache/json5-npm-1.0.2-9607f93e30-10c0.zip/node_modules/json5/",\
@@ -6564,6 +6604,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.12.8"],\
           ["@types/react", "npm:18.3.1"],\
           ["@types/react-dom", "npm:18.3.0"],\
+          ["@types/react-slick", "npm:0.23.13"],\
           ["copy-to-clipboard", "npm:3.3.3"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
@@ -6573,6 +6614,7 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.4.38"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:18.3.1"],\
+          ["react-slick", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:0.30.2"],\
           ["tailwindcss", "npm:3.4.3"],\
           ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"]\
         ],\
@@ -7295,6 +7337,37 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["react-slick", [\
+      ["npm:0.30.2", {\
+        "packageLocation": "../../.yarn/berry/cache/react-slick-npm-0.30.2-0b5987ee2e-10c0.zip/node_modules/react-slick/",\
+        "packageDependencies": [\
+          ["react-slick", "npm:0.30.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:0.30.2", {\
+        "packageLocation": "./.yarn/__virtual__/react-slick-virtual-9b89e07e9d/3/.yarn/berry/cache/react-slick-npm-0.30.2-0b5987ee2e-10c0.zip/node_modules/react-slick/",\
+        "packageDependencies": [\
+          ["react-slick", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:0.30.2"],\
+          ["@types/react", "npm:18.3.1"],\
+          ["@types/react-dom", "npm:18.3.0"],\
+          ["classnames", "npm:2.5.1"],\
+          ["enquire.js", "npm:2.1.6"],\
+          ["json2mq", "npm:0.2.0"],\
+          ["lodash.debounce", "npm:4.0.8"],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:18.3.1"],\
+          ["resize-observer-polyfill", "npm:1.5.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["read-cache", [\
       ["npm:1.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/read-cache-npm-1.0.0-00fa89ed05-10c0.zip/node_modules/read-cache/",\
@@ -7403,6 +7476,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["regjsparser", "npm:0.9.1"],\
           ["jsesc", "npm:0.5.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["resize-observer-polyfill", [\
+      ["npm:1.5.1", {\
+        "packageLocation": "../../.yarn/berry/cache/resize-observer-polyfill-npm-1.5.1-603120e8a0-10c0.zip/node_modules/resize-observer-polyfill/",\
+        "packageDependencies": [\
+          ["resize-observer-polyfill", "npm:1.5.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7700,6 +7782,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/streamsearch-npm-1.1.0-fc3ad6536d-10c0.zip/node_modules/streamsearch/",\
         "packageDependencies": [\
           ["streamsearch", "npm:1.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["string-convert", [\
+      ["npm:0.2.1", {\
+        "packageLocation": "../../.yarn/berry/cache/string-convert-npm-0.2.1-f1a42cb9ea-10c0.zip/node_modules/string-convert/",\
+        "packageDependencies": [\
+          ["string-convert", "npm:0.2.1"]\
         ],\
         "linkType": "HARD"\
       }]\

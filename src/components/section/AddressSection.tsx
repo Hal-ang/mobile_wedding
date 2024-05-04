@@ -1,14 +1,11 @@
 import Address from "./Address";
-import Flex from "../Flex";
 import Image from "next/image";
-import Kakao from "../../../public/kakaoNavi.svg";
-import NaverMap from "../../../public/naverMap.svg";
 import Navigations from "./Navigations";
 import React from "react";
 import Spacing from "../Spacing";
-import TMap from "../../../public/tMap.svg";
 import Text from "../Text";
 import Title from "./Title";
+
 const AddressSection = () => {
   return (
     <section className="w-full px-24pxr">
@@ -38,7 +35,13 @@ const AddressSection = () => {
         너그러운 마음으로 양해 부탁드립니다..♡
       </Text>
       <Spacing size={20} />
-      <Image src={"/map.png"} alt="map" width={382} height={245} />
+      <Image
+        src={"/map.png"}
+        alt="map"
+        width={382}
+        height={245}
+        className="w-full"
+      />
 
       <Spacing size={20} />
       <Navigations />
