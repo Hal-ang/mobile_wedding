@@ -25,3 +25,46 @@ body {
     text-wrap: balance;
   }
 }
+
+@keyframes infiniteAnimation1 {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  50.1% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes infiniteAnimation2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+.wrapper .slide-container {
+  width: 520%;
+}
+.wrapper .slide-container .slide-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.wrapper .slide-container .slide {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.wrapper .slide-container .slide-original {
+  animation: 25s linear infinite normal none running infiniteAnimation1;
+}
+
+.wrapper .slide-container .slide-clone {
+  animation: 25s linear infinite infiniteAnimation2;
+}

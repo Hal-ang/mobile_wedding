@@ -3,6 +3,7 @@ import Flex from "../Flex";
 import Image from "next/image";
 import Kakao from "../../../public/kakaoNavi.svg";
 import NaverMap from "../../../public/naverMap.svg";
+import Navigations from "./Navigations";
 import React from "react";
 import Spacing from "../Spacing";
 import TMap from "../../../public/tMap.svg";
@@ -40,17 +41,7 @@ const AddressSection = () => {
       <Image src={"/map.png"} alt="map" width={382} height={245} />
 
       <Spacing size={20} />
-      <Flex
-        direction="row"
-        justify="flex-end"
-        align="center"
-        className="gap-x-8pxr"
-      >
-        {/* TODO search params */}
-        <Kakao className="flex-none" />
-        <NaverMap className="flex-none" />
-        <TMap className="flex-none" />
-      </Flex>
+      <Navigations />
     </section>
   );
 };
