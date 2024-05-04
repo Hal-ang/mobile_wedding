@@ -18,8 +18,7 @@ const FooterButtons = () => {
 
   const handleCopyLink = useCallback(() => {
     copy(window.location.href);
-    show("계좌번호가 복사되었어요");
-    // TODO : 토스트
+    show("URL 링크가 복사되었습니다.");
   }, []);
   return (
     <>
