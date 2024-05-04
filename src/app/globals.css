@@ -68,3 +68,11 @@ body {
 .wrapper .slide-container .slide-clone {
   animation: 25s linear infinite infiniteAnimation2;
 }
+
+.arcodion-content {
+  transition: max-height 3s ease-out;
+}
+
+.arcodion-content-close {
+  transition: max-height 0.3s ease-out;
+}

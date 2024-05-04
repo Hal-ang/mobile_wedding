@@ -1,3 +1,4 @@
+import AccountSection from "@/components/section/AccountSection";
 import AddressSection from "@/components/section/AddressSection";
 import CalendarSection from "@/components/section/CalendarSection";
 import CoupleSection from "@/components/section/CoupleSection";
@@ -17,7 +18,10 @@ export default function Home() {
       <CalendarSection />
       <Spacing size={100} />
       <AddressSection />
+      <Spacing size={80} />
       <RollingBanner />
+      <Spacing size={80} />
+      <AccountSection />
     </main>
   );
 }
