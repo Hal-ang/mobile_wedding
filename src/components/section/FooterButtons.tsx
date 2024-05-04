@@ -15,6 +15,7 @@ const FooterButtons = () => {
     copy(window.location.href);
     show("URL 링크가 복사되었습니다.");
   }, []);
+
   return (
     <>
       <KaKaoShare url={window.location.href} />
