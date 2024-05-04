@@ -31,6 +31,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.12.8"],\
           ["@types/react", "npm:18.3.1"],\
           ["@types/react-dom", "npm:18.3.0"],\
+          ["copy-to-clipboard", "npm:3.3.3"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
           ["jotai", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:2.8.0"],\
@@ -4128,6 +4129,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["copy-to-clipboard", [\
+      ["npm:3.3.3", {\
+        "packageLocation": "../../.yarn/berry/cache/copy-to-clipboard-npm-3.3.3-6964e6cfad-10c0.zip/node_modules/copy-to-clipboard/",\
+        "packageDependencies": [\
+          ["copy-to-clipboard", "npm:3.3.3"],\
+          ["toggle-selection", "npm:1.0.6"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["core-js-compat", [\
       ["npm:3.37.0", {\
         "packageLocation": "../../.yarn/berry/cache/core-js-compat-npm-3.37.0-9323d119db-10c0.zip/node_modules/core-js-compat/",\
@@ -6553,6 +6564,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.12.8"],\
           ["@types/react", "npm:18.3.1"],\
           ["@types/react-dom", "npm:18.3.0"],\
+          ["copy-to-clipboard", "npm:3.3.3"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
           ["jotai", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:2.8.0"],\
@@ -8006,6 +8018,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["to-regex-range", "npm:5.0.1"],\
           ["is-number", "npm:7.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["toggle-selection", [\
+      ["npm:1.0.6", {\
+        "packageLocation": "../../.yarn/berry/cache/toggle-selection-npm-1.0.6-c506b73005-10c0.zip/node_modules/toggle-selection/",\
+        "packageDependencies": [\
+          ["toggle-selection", "npm:1.0.6"]\
         ],\
         "linkType": "HARD"\
       }]\
