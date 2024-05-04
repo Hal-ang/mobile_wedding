@@ -102,3 +102,7 @@ body {
     opacity: 0;
   }
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

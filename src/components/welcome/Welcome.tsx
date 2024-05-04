@@ -4,8 +4,10 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { BonVivantFont } from "@/style/fonts";
 import Flex from "../Flex";
+import Image from "next/image";
 import ScrollArrow from "../../../public/scroll_arrow.svg";
 import Text from "../Text";
+import useResize from "@/hooks/useResize";
 
 const Welcome = () => {
   const [isInView, setIsInView] = useState(false);
@@ -44,12 +46,32 @@ const Welcome = () => {
     scrollTo({ top: $introduce.offsetTop, behavior: "smooth" });
   }, []);
 
+  const { width } = useResize();
+
   return (
     <div
       ref={ref}
-      className="h-screen bg-white w-full flex flex-col justify-between overflow-hidden"
+      className="relative h-screen bg-white w-full flex flex-col justify-between overflow-hidden"
     >
-      <Flex className={`mt-44pxr`}>
+      {width < 390 ? (
+        <Image
+          className="w-full absolute bottom-0 left-0"
+          alt="wedding"
+          src="/welcome_wedding.png"
+          width={390}
+          height={851}
+        />
+      ) : (
+        <Image
+          className="w-full absolute bottom-0 left-0"
+          alt="wedding"
+          src="/welcome_wedding_large.png"
+          width={430}
+          height={932}
+        />
+      )}
+
+      <Flex className={`mt-44pxr z-10`}>
         {["THE", "WEDDING", "OF", "TAEHOON", "AND", "DANHEE"].map(
           (text, index) => (
             <Text
@@ -70,7 +92,7 @@ const Welcome = () => {
       </Flex>
       <ScrollArrow
         onClick={handleScroll}
-        className="flex-none mb-40pxr cursor-pointer mx-auto"
+        className="flex-none mb-40pxr cursor-pointer mx-auto z-10"
       />
     </div>
   );
