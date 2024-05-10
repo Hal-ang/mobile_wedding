@@ -7,7 +7,6 @@ import Flex from "../Flex";
 import Image from "next/image";
 import ScrollArrow from "../../../public/scroll_arrow.svg";
 import Text from "../Text";
-import useResize from "@/hooks/useResize";
 
 const Welcome = () => {
   const [isInView, setIsInView] = useState(false);
@@ -44,8 +43,6 @@ const Welcome = () => {
     if (!$introduce) return;
     scrollTo({ top: $introduce.offsetTop, behavior: "smooth" });
   }, []);
-
-  const { width } = useResize();
 
   return (
     <div
