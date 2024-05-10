@@ -7,7 +7,6 @@ import Flex from "../Flex";
 import Image from "next/image";
 import ScrollArrow from "../../../public/scroll_arrow.svg";
 import Text from "../Text";
-import useResize from "@/hooks/useResize";
 
 const Welcome = () => {
   const [isInView, setIsInView] = useState(false);
@@ -29,7 +28,7 @@ const Welcome = () => {
   }, []);
 
   useEffect(() => {
-    const $body = document.querySelector("body");
+    const $body = document.getElementById("container");
     if (!$body) return;
 
     if (isInView) {
@@ -45,33 +44,28 @@ const Welcome = () => {
     scrollTo({ top: $introduce.offsetTop, behavior: "smooth" });
   }, []);
 
-
-
-  const { width } = useResize();
-
   return (
     <div
       ref={ref}
       style={{ height: "100svh" }}
       className="relative  bg-white w-full flex flex-col justify-between overflow-hidden"
     >
-      {width < 390 ? (
-        <Image
-          className="w-full absolute bottom-0 left-0"
-          alt="wedding"
-          src="/welcome_wedding.png"
-          width={390}
-          height={851}
-        />
-      ) : (
-        <Image
-          className="w-full absolute bottom-0 left-0"
-          alt="wedding"
-          src="/welcome_wedding_large.png"
-          width={430}
-          height={932}
-        />
-      )}
+      <Image
+        className="visible regular:invisible absolute bottom-0 left-0"
+        width={390}
+        height={851}
+        alt="wedding"
+        src="/welcome/welcome_wedding.png"
+      />
+
+      <Image
+        className="invisible regular:visible  w-full absolute bottom-0 left-0"
+        alt="wedding"
+        src="/welcome/welcome_wedding_large.png"
+        width={430}
+        height={932}
+        priority
+      />
 
       <Flex className={`mt-44pxr z-10`}>
         {["THE", "WEDDING", "OF", "TAEHOON", "AND", "DANHEE"].map(

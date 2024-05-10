@@ -2,88 +2,25 @@
 
 import "swiper/css";
 
-import React, {
-  startTransition,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from "react";
+import React, { startTransition, useEffect, useRef, useState } from "react";
 
+import Image from "next/image";
 import ImageDetails from "../ImageDetails";
 import ProgressBar from "./ProgressBar";
 import Spacing from "../Spacing";
 import Title from "./Title";
-import { getContentHeight } from "@/utils";
-import useResize from "@/hooks/useResize";
-import { useRouter } from "next/navigation";
 
-const IMAGES = [
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  },
-  {
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR18Pk04HDr6LCFm6-uuSPOzL4sIo5WmUjwvahHRglxRw&s"
-  }
-];
+const getGalleryImageLoader = (number: number) => {
+  return `/gallery/gallery_${number < 10 ? `0${number}` : number}.jpg`;
+};
+const IMAGES = Array.from({ length: 18 }, (_, i) => ({
+  url: getGalleryImageLoader(i + 1)
+}));
 const GallerySection = () => {
-  const { width } = useResize();
   const [selectedImage, setSelectedImage] = useState(
     Math.ceil(IMAGES.length / 2 - 1)
   );
 
-  const viewerSize = useMemo(
-    () => ({
-      width: width - 24 * 2,
-      height: getContentHeight(width - 24 * 2, { width: 342, height: 513 })
-    }),
-    [width]
-  );
   const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -104,7 +41,6 @@ const GallerySection = () => {
   }, [selectedImage]);
 
   const [progressPercent, setProgressPercent] = useState(0);
-  const router = useRouter();
 
   const [visibleModal, setVisibleModal] = useState(false);
 
@@ -114,14 +50,17 @@ const GallerySection = () => {
         <Title>GALLERY</Title>
         <Spacing size={10} />
 
-        <div
-          className="w-full bg-gray-300 cursor-pointer"
-          style={{ height: viewerSize.height }}
+        <Image
+          className="w-full"
+          alt="selected-image"
+          loading="eager"
+          src={IMAGES[selectedImage].url}
+          width={764}
+          height={1146}
           onClick={() => {
-            // router.push("/");
             setVisibleModal(true);
           }}
-        ></div>
+        />
         <Spacing size={16} />
         <ProgressBar width={`${progressPercent}%`} />
       </div>
@@ -154,34 +93,40 @@ const GallerySection = () => {
       >
         {IMAGES.map((image, index) => (
           <div
-            key={index}
             onClick={(e) => {
               setSelectedImage(index);
             }}
+            className={`relative cursor-pointer w-60pxr h-90pxr flex-none`}
           >
+            <Image
+              loading="lazy"
+              key={index}
+              alt="preview"
+              src={image.url}
+              width={120}
+              height={180}
+            />
             <div
-              className="w-60pxr h-90pxr bg-gray-100"
+              className="w-full h-full absolute left-0 top-0"
               style={
                 index === selectedImage
                   ? { boxShadow: `0 0 0 2px #000 inset` }
                   : undefined
               }
-            >
-              {index}
-            </div>
+            />
           </div>
         ))}
       </div>
-      {visibleModal && (
-        <ImageDetails
-          onClose={() => {
-            // router.back();
-            setVisibleModal(false);
-          }}
-          images={IMAGES}
-          selectedIndex={selectedImage}
-        />
-      )}
+
+      <ImageDetails
+        isOpen={visibleModal}
+        onClose={() => {
+          // router.back();
+          setVisibleModal(false);
+        }}
+        images={IMAGES}
+        selectedIndex={selectedImage}
+      />
     </section>
   );
 };
