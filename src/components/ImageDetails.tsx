@@ -57,7 +57,7 @@ const ImageDetails = ({
             </Text>
           </div>
 
-          <Close className="flex-none" onClick={onClose} />
+          <Close className="cursor-pointer flex-none" onClick={onClose} />
         </Flex>
         <Spacing size={9} />
         <Swiper
