@@ -1,6 +1,7 @@
 import "./globals.css";
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+
 import { PretendardFont } from "@/style/fonts";
 import { ToastProvider } from "@/components/toast/ToastProvider";
 
@@ -22,6 +23,14 @@ export const metadata: Metadata = {
       }
     ]
   }
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
+  userScalable: false
 };
 
 export default function RootLayout({
