@@ -20,7 +20,7 @@ export default function Home() {
       <BlockPintch>
         <KakaoSDK>
           <Welcome />
-          <IntroduceSection />
+          {/* <IntroduceSection />
           <Spacing size={100} />
           <CoupleSection />
           <Spacing size={100} />
@@ -34,7 +34,7 @@ export default function Home() {
           <Spacing size={80} />
           <AccountSection />
           <Spacing size={100} />
-          <FooterSection />
+          <FooterSection /> */}
         </KakaoSDK>
       </BlockPintch>
     </main>
