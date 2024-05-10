@@ -2,22 +2,13 @@
 
 import "swiper/css";
 
-import React, {
-  startTransition,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from "react";
+import React, { startTransition, useEffect, useRef, useState } from "react";
 
 import Image from "next/image";
 import ImageDetails from "../ImageDetails";
 import ProgressBar from "./ProgressBar";
 import Spacing from "../Spacing";
 import Title from "./Title";
-import { getContentHeight } from "@/utils";
-import useResize from "@/hooks/useResize";
-import { useRouter } from "next/navigation";
 
 const getGalleryImageLoader = (number: number) => {
   return `/gallery/gallery_${number < 10 ? `0${number}` : number}.jpg`;
@@ -126,16 +117,16 @@ const GallerySection = () => {
           </div>
         ))}
       </div>
-      {visibleModal && (
-        <ImageDetails
-          onClose={() => {
-            // router.back();
-            setVisibleModal(false);
-          }}
-          images={IMAGES}
-          selectedIndex={selectedImage}
-        />
-      )}
+
+      <ImageDetails
+        isOpen={visibleModal}
+        onClose={() => {
+          // router.back();
+          setVisibleModal(false);
+        }}
+        images={IMAGES}
+        selectedIndex={selectedImage}
+      />
     </section>
   );
 };
