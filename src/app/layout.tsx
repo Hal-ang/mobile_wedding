@@ -31,8 +31,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={PretendardFont.className + " text-black font-normal"}>
+      <body
+        className={
+          PretendardFont.className + " text-black font-normal relative"
+        }
+      >
         <ToastProvider>{children}</ToastProvider>
+
         <div id="portal" className="relative"></div>
       </body>
     </html>

@@ -12,7 +12,10 @@ import Welcome from "@/components/welcome/Welcome";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col overflow-x-hidden">
+    <main
+      className=" absolute min-h-screen overflow-x-hidden flex flex-col large:max-w-[430px] right-2/4"
+      style={{ transform: `translate(50%)` }}
+    >
       <KakaoSDK>
         <Welcome />
         <IntroduceSection />

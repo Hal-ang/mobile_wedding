@@ -29,7 +29,7 @@ const Welcome = () => {
   }, []);
 
   useEffect(() => {
-    const $body = document.querySelector("body");
+    const $body = document.getElementById("container");
     if (!$body) return;
 
     if (isInView) {
@@ -44,8 +44,6 @@ const Welcome = () => {
     if (!$introduce) return;
     scrollTo({ top: $introduce.offsetTop, behavior: "smooth" });
   }, []);
-
-
 
   const { width } = useResize();
 
