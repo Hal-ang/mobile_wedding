@@ -6,6 +6,7 @@ import { BonVivantFont } from "@/style/fonts";
 import Flex from "../Flex";
 import Glare from "../../../public/glare/glare.svg";
 import Image from "next/image";
+import Spacing from "../Spacing";
 import Text from "../Text";
 
 const CrossTitle = () => {
@@ -13,6 +14,7 @@ const CrossTitle = () => {
     <div
       className={`${BonVivantFont.className} text-66pxr leading-58pxr medium:text-81pxr medium:leading-71pxr large:text-88pxr large:leading-77pxr mt-12pxr w-full`}
     >
+      <Spacing size={70} />
       <Text display="block" style={{ transform: "translate(-0.75rem)" }}>
         NEVER
       </Text>
@@ -43,7 +45,7 @@ const CrossTitle = () => {
       </Flex>
 
       <Flex direction="row" align="start" justify="end">
-        <Text style={{ transform: "translate(0.75rem)" }}>GLADNESS</Text>
+        <Text style={{ transform: "translate(0.55rem)" }}>GLADNESS</Text>
       </Flex>
     </div>
   );
