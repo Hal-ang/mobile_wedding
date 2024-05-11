@@ -19,7 +19,7 @@ export default function Home() {
           className="w-full absolute min-h-screen overflow-x-hidden flex flex-col large:max-w-[430px] right-2/4"
           style={{ transform: `translate(50%)` }}
         >
-          <div className="relative w-full h-full">
+          <div id="scroll-container" className="relative w-full h-full">
             <IntroduceSection enabledTransition />
             <Spacing size={50} />
             <CoupleSection enabledTransition />
@@ -30,7 +30,7 @@ export default function Home() {
             <Spacing size={50} />
             <AddressSection />
             <Spacing size={80} />
-            <RollingBanner />
+
             {/* <div className="absolute top-0 left-0 w-full h-full z-10">
               <Welcome className={""} />
             </div> */}

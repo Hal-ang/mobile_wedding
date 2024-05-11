@@ -17,7 +17,7 @@ const useIsInView = (target: RefObject<HTMLElement>, callback?: () => void) => {
           }
         });
       },
-      { threshold: 1 }
+      { threshold: 0.7 }
     );
 
     observer.observe(target.current);

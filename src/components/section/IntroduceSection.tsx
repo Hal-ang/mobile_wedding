@@ -9,6 +9,7 @@ import Glare from "../../../public/glare/glare.svg";
 import Image from "next/image";
 import SlideUp from "../SlideUp";
 import Spacing from "../Spacing";
+import useIsInView from "@/hooks/useIsInView";
 
 const Title = ({ className, ...props }: TextProps) => {
   return (
@@ -29,8 +30,6 @@ const IntroduceSection = ({
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
   const handleTransition = useCallback(() => {
-    // if (!enabledTransition) return;
-
     const intervalId = setInterval(() => {
       setTransitionIds((prev) => {
         if (prev.length === 6) {
@@ -66,6 +65,8 @@ const IntroduceSection = ({
     }, 3500);
   }, []);
 
+  useIsInView(ref, handleTransition);
+
   return (
     <section
       ref={ref}
@@ -74,9 +75,7 @@ const IntroduceSection = ({
       className="w-full relative"
       onClick={(e) => {
         e.stopPropagation();
-        if (transitionIds.length === 0) {
-          handleTransition();
-        } else {
+        if (transitionIds.length !== 0) {
           const $couple = document.getElementById("couple-section");
           if ($couple) {
             $couple.scrollIntoView({ behavior: "smooth" });

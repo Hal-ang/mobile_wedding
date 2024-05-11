@@ -1,12 +1,14 @@
 import React, { CSSProperties, ReactNode, useEffect, useState } from "react";
 
 const SlideUp = ({
+  id,
   children,
   show = false,
   className = "",
   disabled = false,
   style
 }: {
+  id?: string;
   show?: boolean;
   children: ReactNode;
   className?: string;
@@ -24,6 +26,7 @@ const SlideUp = ({
 
   return (
     <div
+      id={id}
       className={`will-change-transform slideup-container ${className}`}
       style={style}
     >

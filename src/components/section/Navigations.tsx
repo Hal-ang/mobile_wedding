@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback } from "react";
+import React, { ReactNode, useCallback } from "react";
 
 import Flex from "../Flex";
 import Kakao from "../../../public/kakaoNavi.svg";
@@ -20,12 +20,14 @@ const Navigations = () => {
 
   return (
     <Flex
+      id="navigations"
       direction="row"
       justify="flex-end"
       align="center"
       className="gap-x-8pxr"
     >
       <Kakao onClick={handleKakaoNavi} className="flex-none" />
+
       <Link href="https://naver.me/54xSGWUS">
         <NaverMap className="flex-none" />
       </Link>

@@ -68,7 +68,19 @@ const GallerySection = ({
   const { isInView } = useIsInView(ref, handleTransition);
 
   return (
-    <section ref={ref} id="gallery-section" className="w-full">
+    <section
+      ref={ref}
+      id="gallery-section"
+      className="w-full"
+      onClick={() => {
+        if (transitionIds.length === 0) return;
+
+        const $address = document.getElementById("address-section");
+        if ($address) {
+          $address.scrollIntoView({ behavior: "smooth" });
+        }
+      }}
+    >
       <Spacing size={50} />
       <SlideUp
         className="w-full"
