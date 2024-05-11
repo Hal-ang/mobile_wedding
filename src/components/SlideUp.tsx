@@ -1,13 +1,17 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { CSSProperties, ReactNode, useEffect, useState } from "react";
 
 const SlideUp = ({
   children,
   show = false,
-  className = ""
+  className = "",
+  disabled = false,
+  style
 }: {
   show?: boolean;
   children: ReactNode;
   className?: string;
+  disabled?: boolean;
+  style?: CSSProperties;
 }) => {
   const [initialized, setInitialized] = useState(false);
   useEffect(() => {
@@ -16,10 +20,17 @@ const SlideUp = ({
     }
   }, [show]);
 
+  if (disabled) return <>{children}</>;
+
   return (
-    <div className={`will-change-transform slideup-container ${className}`}>
+    <div
+      className={`will-change-transform slideup-container ${className}`}
+      style={style}
+    >
       <div
-        className={`${!initialized ? "invisible" : ""} ${show ? "active" : ""}`}
+        className={`  ${!initialized ? "invisible" : ""} ${
+          show ? "active" : ""
+        }`}
       >
         {children}
       </div>

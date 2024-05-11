@@ -123,14 +123,13 @@ body {
 }
 
 .slideup-container {
-  display: inline-flex;
   position: relative;
   overflow: hidden;
   width: auto;
 }
 
 .slideup-container .active {
-  animation: slideUp 1s;
+  animation: slideUp 1.5s;
 }
 
 @keyframes slideUp {

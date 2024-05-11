@@ -20,10 +20,10 @@ export default function Home() {
           style={{ transform: `translate(50%)` }}
         >
           <div className="relative w-full h-full">
-            <div className="absolute top-0 left-0 w-full h-full z-10">
+            {/* <div className="absolute top-0 left-0 w-full h-full z-10">
               <Welcome className={""} />
-            </div>
-            <IntroduceSection />
+            </div> */}
+            <IntroduceSection enabledTransition />
             <Spacing size={100} />
             {/* <CoupleSection />
           <Spacing size={100} />

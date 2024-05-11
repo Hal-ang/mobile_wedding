@@ -5,7 +5,7 @@ import React, {
   ReactNode
 } from "react";
 
-interface TextProps extends HTMLAttributes<HTMLElement> {
+export interface TextProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
   as?: ElementType;
   display?: CSSProperties["display"];
