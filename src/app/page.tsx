@@ -13,16 +13,19 @@ import Welcome from "@/components/welcome/Welcome";
 
 export default function Home() {
   return (
-    <main
-      className="w-full absolute min-h-screen overflow-x-hidden flex flex-col large:max-w-[430px] right-2/4"
-      style={{ transform: `translate(50%)` }}
-    >
-      <BlockPintch>
-        <KakaoSDK>
-          <Welcome />
-          {/* <IntroduceSection />
-          <Spacing size={100} />
-          <CoupleSection />
+    <BlockPintch>
+      <KakaoSDK>
+        <main
+          className="w-full absolute min-h-screen overflow-x-hidden flex flex-col large:max-w-[430px] right-2/4"
+          style={{ transform: `translate(50%)` }}
+        >
+          <div className="relative w-full h-full">
+            <div className="absolute top-0 left-0 w-full h-full z-10">
+              <Welcome className={""} />
+            </div>
+            <IntroduceSection />
+            <Spacing size={100} />
+            {/* <CoupleSection />
           <Spacing size={100} />
           <CalendarSection />
           <Spacing size={100} />
@@ -35,8 +38,9 @@ export default function Home() {
           <AccountSection />
           <Spacing size={100} />
           <FooterSection /> */}
-        </KakaoSDK>
-      </BlockPintch>
-    </main>
+          </div>
+        </main>
+      </KakaoSDK>
+    </BlockPintch>
   );
 }

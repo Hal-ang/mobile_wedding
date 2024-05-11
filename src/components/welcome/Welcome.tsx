@@ -8,45 +8,9 @@ import Image from "next/image";
 import ScrollArrow from "../../../public/scroll_arrow.svg";
 import SlideUp from "../SlideUp";
 import Text from "../Text";
-import { clear } from "console";
 
 const TITLE = ["THE", "WEDDING", "OF", "TAEHOON", "AND", "DANHEE"];
-const Welcome = () => {
-  const [isInView, setIsInView] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-        } else {
-          setIsInView(false);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(ref.current);
-  }, []);
-
-  useEffect(() => {
-    const $body = document.getElementById("container");
-    if (!$body) return;
-
-    if (isInView) {
-      scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      $body.style.overflow = "auto";
-    }
-  }, [isInView]);
-
-  const handleScroll = useCallback(() => {
-    const $introduce = document.getElementById("introduce");
-    if (!$introduce) return;
-    scrollTo({ top: $introduce.offsetTop, behavior: "smooth" });
-  }, []);
-
+const Welcome = ({ className }: { className?: string }) => {
   const [visibleTitle, setVisibleTitle] = useState<number[]>([]);
 
   const [clicked, setClicked] = useState(false);
@@ -66,11 +30,11 @@ const Welcome = () => {
 
     setTimeout(() => {
       setVisibleSubTitle(true);
-    }, 2000);
+    }, 1800);
 
     setTimeout(() => {
       setVisibleButton(true);
-    }, 2500);
+    }, 3000);
   }, []);
 
   const [visibleSubTitle, setVisibleSubTitle] = useState(false);
@@ -82,12 +46,30 @@ const Welcome = () => {
     startTitleTransition();
   }, [clicked]);
 
+  const [visible, setVisible] = useState(true);
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    if (visible) return;
+
+    const timeoutId = setTimeout(() => {
+      setHidden(true);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [visible]);
+
+  if (hidden) return null;
+
   return (
     <div
-      ref={ref}
-      style={{ height: "100svh" }}
+      style={{ height: "100svh", transition: "opacity 2s" }}
       onClick={() => setClicked(true)}
-      className="relative  bg-white w-full flex flex-col justify-between overflow-hidden"
+      className={`relative  bg-white w-full flex flex-col justify-between overflow-hidden ${className} ${
+        visible ? "opacity-100" : "opacity-0"
+      }`}
     >
       <Image
         className="visible regular:invisible absolute bottom-0 left-0"
@@ -135,7 +117,7 @@ const Welcome = () => {
             show={visibleButton}
             className="flex-none mb-40pxr cursor-pointer mx-auto z-10"
           >
-            <ScrollArrow onClick={handleScroll} />
+            <ScrollArrow onClick={() => setVisible(false)} />
           </SlideUp>
         </>
       )}
