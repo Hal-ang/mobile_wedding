@@ -20,17 +20,28 @@ export default function Home() {
           style={{ transform: `translate(50%)` }}
         >
           <div className="relative w-full h-full">
+            <IntroduceSection enabledTransition />
+            <Spacing size={50} />
+            <CoupleSection enabledTransition />
+            <Spacing size={50} />
+            <CalendarSection enabledTransition />
+            <Spacing size={50} />
+            <GallerySection enabledTransition />
+            <Spacing size={50} />
+            <AddressSection />
+            <Spacing size={80} />
+            <RollingBanner />
             {/* <div className="absolute top-0 left-0 w-full h-full z-10">
               <Welcome className={""} />
             </div> */}
-            <IntroduceSection enabledTransition />
-            <Spacing size={100} />
-            <CoupleSection />
+
             {/* <Spacing size={100} />
-          <CalendarSection />
-          <Spacing size={100} />
-          <GallerySection />
-          <Spacing size={100} />
+            <CoupleSection enabledTransition />
+            <Spacing size={100} />
+            <CalendarSection enabledTransition />
+            <Spacing size={100} />
+            <GallerySection />
+            {/* <Spacing size={100} />
           <AddressSection />
           <Spacing size={80} />
           <RollingBanner />

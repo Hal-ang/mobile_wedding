@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Text, { TextProps } from "../Text";
 
 import { BonVivantFont } from "@/style/fonts";
@@ -29,7 +29,7 @@ const IntroduceSection = ({
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
   const handleTransition = useCallback(() => {
-    if (!enabledTransition) return;
+    // if (!enabledTransition) return;
 
     const intervalId = setInterval(() => {
       setTransitionIds((prev) => {
@@ -64,7 +64,7 @@ const IntroduceSection = ({
         });
       }, 900);
     }, 3500);
-  }, [enabledTransition]);
+  }, []);
 
   return (
     <section
@@ -74,10 +74,13 @@ const IntroduceSection = ({
       className="w-full relative"
       onClick={(e) => {
         e.stopPropagation();
-        if (!transitionIds) {
+        if (transitionIds.length === 0) {
           handleTransition();
         } else {
-          // TODO : scroll profiles
+          const $couple = document.getElementById("couple-section");
+          if ($couple) {
+            $couple.scrollIntoView({ behavior: "smooth" });
+          }
         }
       }}
     >

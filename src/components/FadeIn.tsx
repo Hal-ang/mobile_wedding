@@ -1,17 +1,15 @@
 import React, { CSSProperties, ReactNode, useEffect, useState } from "react";
 
-const SlideUp = ({
+const FadeIn = ({
   children,
   show = false,
   className = "",
-  disabled = false,
   style
 }: {
-  show?: boolean;
   children: ReactNode;
-  className?: string;
-  disabled?: boolean;
+  show?: boolean;
   style?: CSSProperties;
+  className?: string;
 }) => {
   const [initialized, setInitialized] = useState(false);
   useEffect(() => {
@@ -20,20 +18,15 @@ const SlideUp = ({
     }
   }, [show]);
 
-  if (disabled) return <>{children}</>;
-
   return (
     <div
-      className={`will-change-transform slideup-container ${className}`}
       style={style}
+      className={`${!initialized ? "invisible" : " fade-in"}
+       ${className}`}
     >
-      <div
-        className={`${!initialized ? "invisible" : ""} ${show ? "active" : ""}`}
-      >
-        {children}
-      </div>
+      {children}
     </div>
   );
 };
 
-export default SlideUp;
+export default FadeIn;

@@ -16,7 +16,7 @@ const Welcome = ({ className }: { className?: string }) => {
   const handleTransition = useCallback(() => {
     const intervalId = setInterval(() => {
       setTransitionIds((prev) => {
-        if (prev.length === TITLE.length - 1) {
+        if (prev.length === TITLE.length) {
           clearInterval(intervalId);
           return prev;
         }
@@ -56,7 +56,7 @@ const Welcome = ({ className }: { className?: string }) => {
       onClick={(e) => {
         e.stopPropagation();
 
-        if (!transitionIds) {
+        if (transitionIds.length === 0) {
           handleTransition();
         }
       }}
