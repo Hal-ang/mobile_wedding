@@ -72,7 +72,8 @@ const GallerySection = ({
       ref={ref}
       id="gallery-section"
       className="w-full"
-      onClick={() => {
+      onClick={(e) => {
+
         const $address = document.getElementById("address-section");
         if ($address) {
           $address.scrollIntoView({ behavior: "smooth" });
@@ -98,7 +99,8 @@ const GallerySection = ({
           src={IMAGES[selectedImage].url}
           width={764}
           height={1146}
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation()
             setVisibleModal(true);
           }}
         />
@@ -136,6 +138,7 @@ const GallerySection = ({
             <div
               key={index}
               onClick={(e) => {
+                e.stopPropagation()
                 setSelectedImage(index);
               }}
               className={`relative cursor-pointer w-60pxr h-90pxr flex-none`}

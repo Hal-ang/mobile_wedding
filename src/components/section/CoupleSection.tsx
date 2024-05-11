@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import CoupleImage from "./CoupleImage";
 import SlideUp from "../SlideUp";
 import Spacing from "../Spacing";
 import Title from "./Title";
+import { useInterval } from "@/hooks/useInterval";
 import useIsInView from "@/hooks/useIsInView";
 
 const TITLE = ["THE", "MARRIAGE", "OF"];
@@ -17,23 +18,29 @@ const CoupleSection = ({
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
   const intervalId = useRef<NodeJS.Timeout | null>(null);
-  const intervalId2 = useRef<NodeJS.Timeout | null>(null);
-  const handleTransition = useCallback(() => {
-    intervalId.current = setInterval(() => {
+
+  const [startTransition, setStartTransition] = useState(false);
+
+  useInterval(() => {
+    if (!startTransition) return;
+
+    if (transitionIds.length < TITLE.length) {
       setTransitionIds((prev) => {
         if (prev.length === TITLE.length) {
-          clearInterval(intervalId.current!);
           return prev;
         }
         return prev.concat(prev.length);
       });
-    }, 200);
+    }
+  }, 200);
+  useEffect(() => {
+    if (!startTransition) return;
 
     setTimeout(() => {
-      intervalId2.current = setInterval(() => {
+      intervalId.current = setInterval(() => {
         setTransitionIds((prev) => {
           if (prev.length === TITLE.length + 2) {
-            clearInterval(intervalId2.current!);
+            clearInterval(intervalId.current!);
             return prev;
           }
           return prev.concat(prev.length);
@@ -44,20 +51,17 @@ const CoupleSection = ({
     setTimeout(() => {
       setTransitionIds((prev) => prev.concat(prev.length));
     }, 3000);
-  }, []);
+  }, [startTransition]);
 
   useEffect(() => {
-    if (transitionIds.length === TITLE.length + 1) {
-      clearTimeout(intervalId.current!);
-      intervalId.current = null;
-      clearTimeout(intervalId2.current!);
-      intervalId2.current = null;
+    if (transitionIds.length >= TITLE.length + 2) {
+      clearInterval(intervalId.current!);
     }
   }, [transitionIds]);
 
   const ref = useRef<HTMLDivElement>(null);
 
-  const { isInView } = useIsInView(ref, handleTransition);
+  const { isInView } = useIsInView(ref, () => setStartTransition(true));
 
   useEffect(() => {
     const handler = () => {

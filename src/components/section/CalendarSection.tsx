@@ -12,6 +12,7 @@ import Calendar from "../Calendar";
 import SlideUp from "../SlideUp";
 import Spacing from "../Spacing";
 import Title from "./Title";
+import { useInterval } from "@/hooks/useInterval";
 import useIsInView from "@/hooks/useIsInView";
 
 const TITLE = ["2024.06.08", "SATURDAY", "PM 4:00"];
@@ -23,31 +24,43 @@ const CalendarSection = ({
   const ref = useRef<HTMLDivElement>(null);
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
-  const handleTransition = useCallback(() => {
-    const intervalId = setInterval(() => {
-      setTransitionIds((prev) => {
-        if (prev.length === TITLE.length) {
-          clearInterval(intervalId);
-          return prev;
-        }
-        return prev.concat(prev.length);
-      });
-    }, 200);
+  const [startTransition, setStartTransition] = useState(false);
+  const [callTimeout, setCallTimeout] = useState(false);
 
+  useInterval(() => {
+    if (!startTransition || transitionIds.length >= TITLE.length) return;
+
+    setTransitionIds((prev) => {
+      return prev.concat(prev.length);
+    });
+  }, 200);
+
+  useInterval(() => {
+    if (
+      !startTransition ||
+      !callTimeout ||
+      transitionIds.length >= TITLE.length + 5
+    )
+      return;
+    setTransitionIds((prev) => {
+      return prev.concat(prev.length);
+    });
+  }, 200);
+
+  useEffect(() => {
+    if (!startTransition) return;
     setTimeout(() => {
-      const intervalId2 = setInterval(() => {
-        setTransitionIds((prev) => {
-          if (prev.length === TITLE.length + 5) {
-            clearInterval(intervalId);
-            return prev;
-          }
-          return prev.concat(prev.length);
-        });
-      }, 200);
+      setCallTimeout(true);
     }, 1000);
-  }, []);
+  }, [startTransition]);
 
-  const { isInView } = useIsInView(ref, handleTransition);
+  useEffect(() => {
+    if (transitionIds.length === 4) {
+      setStartTransition(false);
+    }
+  }, [transitionIds]);
+
+  const { isInView } = useIsInView(ref, () => setStartTransition(true));
 
   useEffect(() => {
     const handler = () => {
@@ -66,10 +79,6 @@ const CalendarSection = ({
       removeEventListener("click", handler);
     };
   }, [isInView]);
-
-  useEffect(() => {
-    console.log("calendar", transitionIds);
-  }, [transitionIds]);
 
   return (
     <section id="calendar-section" ref={ref} className="w-full px-24pxr">
@@ -90,7 +99,7 @@ const CalendarSection = ({
 
       <SlideUp
         disabled={!enabledTransition}
-        show={transitionIds.includes(TITLE.length + 1)}
+        show={transitionIds.includes(TITLE.length)}
         className="w-full"
       >
         <Calendar>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { BonVivantFont } from "@/style/fonts";
 import Flex from "../Flex";
@@ -8,6 +8,7 @@ import Image from "next/image";
 import ScrollArrow from "../../../public/scroll_arrow.svg";
 import SlideUp from "../SlideUp";
 import Text from "../Text";
+import { useInterval } from "@/hooks/useInterval";
 
 const TITLE = ["THE", "WEDDING", "OF", "TAEHOON", "AND", "DANHEE"];
 const Welcome = ({
@@ -18,26 +19,33 @@ const Welcome = ({
   onNext: () => void;
 }) => {
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
+  const [startTransition, setStartTransition] = useState(false);
 
-  const handleTransition = useCallback(() => {
-    const intervalId = setInterval(() => {
-      setTransitionIds((prev) => {
-        if (prev.length === TITLE.length) {
-          clearInterval(intervalId);
-          return prev;
-        }
-        return prev.concat(prev.length);
-      });
-    }, 100);
+  useInterval(() => {
+    if (!startTransition || transitionIds.length > TITLE.length) {
+      return;
+    }
+    setTransitionIds((prev) => {
+      return prev.concat(prev.length);
+    });
+  }, 100);
 
-    setTimeout(() => {
+  useEffect(() => {
+    if (!startTransition) return;
+
+    const timeout = setTimeout(() => {
       setTransitionIds((prev) => prev.concat(prev.length));
     }, 1800);
 
-    setTimeout(() => {
+    const timeout2 = setTimeout(() => {
       setTransitionIds((prev) => prev.concat(prev.length));
     }, 3000);
-  }, []);
+
+    return () => {
+      clearTimeout(timeout);
+      clearTimeout(timeout2);
+    };
+  }, [startTransition]);
 
   const [visible, setVisible] = useState(true);
   const [hidden, setHidden] = useState(false);
@@ -69,7 +77,7 @@ const Welcome = ({
         e.stopPropagation();
 
         if (transitionIds.length === 0) {
-          handleTransition();
+          setStartTransition(true);
         }
       }}
       className={`relative  bg-white w-full flex flex-col justify-between overflow-hidden ${className} ${

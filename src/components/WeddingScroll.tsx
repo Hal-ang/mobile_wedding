@@ -18,12 +18,14 @@ const WeddingScroll = () => {
   const [visitedAll, setVisitedAll] = useState(false);
 
   useEffect(() => {
-    if (!visitedWelcome) {
+    if (visitedAll) {
+      document.body.style.overflow = "auto";
+    } else if (!visitedWelcome) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-  }, [visitedWelcome]);
+  }, [visitedWelcome, visitedAll]);
   return (
     <BlockPintch>
       <KakaoSDK>
@@ -31,11 +33,11 @@ const WeddingScroll = () => {
           className="w-full absolute min-h-screen overflow-x-hidden flex flex-col large:max-w-[430px] right-2/4"
           style={{ transform: `translate(50%)` }}
         >
-          <div id="scroll-container" className="relative w-full h-full">
+          <section id="scroll-container" className="relative w-full h-full">
             {!visitedWelcome && (
-              <div className="absolute top-0 left-0 w-full h-full z-10">
+              <section className="absolute top-0 left-0 w-full h-full z-10">
                 <Welcome onNext={() => setVisitedWelcome(true)} />
-              </div>
+              </section>
             )}
             <IntroduceSection
               visitedWelcome={visitedWelcome}
@@ -46,11 +48,11 @@ const WeddingScroll = () => {
             <Spacing size={50} />
             <CalendarSection enabledTransition />
             <Spacing size={50} />
-            {/* <GallerySection enabledTransition /> */}
+            <GallerySection enabledTransition />
             <Spacing size={50} />
             <AddressSection />
             <AccountSection onDone={() => setVisitedAll(true)} />
-          </div>
+          </section>
         </main>
       </KakaoSDK>
     </BlockPintch>

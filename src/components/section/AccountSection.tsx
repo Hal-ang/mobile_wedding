@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import Account from "./Account";
 import Arcodion from "../Arcodion";
@@ -9,6 +9,8 @@ import SlideUp from "../SlideUp";
 import Spacing from "../Spacing";
 import Text from "../Text";
 import Title from "./Title";
+import { start } from "repl";
+import { useInterval } from "@/hooks/useInterval";
 import useIsInView from "@/hooks/useIsInView";
 
 const TITLE = ["GIFT", "FOR", "WEDDING", "CEREMONY"];
@@ -16,49 +18,55 @@ const TITLE = ["GIFT", "FOR", "WEDDING", "CEREMONY"];
 const AccountSection = ({ onDone }: { onDone: () => void }) => {
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
+  const [startTransition, setStartTransition] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const handleTransition = useCallback(() => {
+  useInterval(() => {
+    if (!startTransition || transitionIds.length >= TITLE.length) return;
+
+    setTransitionIds((prev) => {
+      return prev.concat(prev.length);
+    });
+  }, 200);
+  const { isInView } = useIsInView(ref, () => setStartTransition(true));
+
+  const [callTimeout, setCallTimeout] = useState(false);
+
+  useInterval(() => {
+    if (!callTimeout || transitionIds.length >= TITLE.length + 2) return;
+
+    setTransitionIds((prev) => {
+      return prev.concat(prev.length);
+    });
+  }, 100);
+
+  useEffect(() => {
+    if (!startTransition) return;
+
+    setTimeout(() => {
+      setCallTimeout(true);
+    }, 1400);
+
     const intervalId = setInterval(() => {
       setTransitionIds((prev) => {
-        if (prev.length === TITLE.length) {
+        if (prev.length === TITLE.length + 2) {
           clearInterval(intervalId);
           return prev;
         }
         return prev.concat(prev.length);
       });
-    }, 200);
-  }, []);
-  useIsInView(ref, handleTransition);
+    }, 100);
+
+    const timeoutId = setTimeout(() => {
+      setTransitionIds((prev) => prev.concat(TITLE.length + 2));
+      clearTimeout(timeoutId);
+    }, 1000);
+    onDone();
+  }, [startTransition]);
 
   return (
     <>
-      <section
-        ref={ref}
-        id="account-section"
-        className="w-full px-24pxr"
-        onClick={() => {
-          if (transitionIds.length === 0) return;
-
-          if (transitionIds.length === TITLE.length) {
-            const intervalId = setInterval(() => {
-              setTransitionIds((prev) => {
-                if (prev.length === TITLE.length + 2) {
-                  clearInterval(intervalId);
-                  return prev;
-                }
-                return prev.concat(prev.length);
-              });
-            }, 100);
-
-            const timeoutId = setTimeout(() => {
-              setTransitionIds((prev) => prev.concat(TITLE.length + 2));
-              clearTimeout(timeoutId);
-            }, 1000);
-            onDone();
-          }
-        }}
-      >
+      <section ref={ref} id="account-section" className="w-full px-24pxr">
         <Spacing size={80} />
         {TITLE.map((title, i) => (
           <SlideUp key={title} show={transitionIds.includes(i)}>
