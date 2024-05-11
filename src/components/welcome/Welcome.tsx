@@ -56,7 +56,7 @@ const Welcome = ({
 
     const timeoutId = setTimeout(() => {
       setHidden(true);
-    }, 2000);
+    }, 1200);
 
     return () => {
       clearTimeout(timeoutId);
