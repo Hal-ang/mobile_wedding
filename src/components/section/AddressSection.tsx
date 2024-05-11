@@ -17,14 +17,15 @@ const AddressSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
+  const intervalId = useRef<NodeJS.Timeout | null>(null);
   const handleTransition = useCallback(() => {
     setTransitionIds((prev) => (prev.length === 0 ? [0, 1, 2, 3] : prev));
 
     const timeoutId = setTimeout(() => {
-      const intervalId = setInterval(() => {
+      intervalId.current = setInterval(() => {
         setTransitionIds((prev) => {
           if (prev.length === TITLE.length + 3) {
-            clearInterval(intervalId);
+            clearInterval(intervalId.current!);
             return prev;
           }
           return prev.concat(prev.length);
@@ -34,6 +35,14 @@ const AddressSection = () => {
   }, []);
 
   useIsInView(ref, handleTransition);
+
+  useEffect(() => {
+    if (transitionIds.length === TITLE.length + 6) {
+      clearInterval(intervalId.current!);
+      intervalId.current = null;
+    }
+    console.log("address", transitionIds);
+  }, [transitionIds]);
 
   return (
     <>

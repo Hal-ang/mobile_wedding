@@ -65,6 +65,10 @@ const IntroduceSection = ({
     }, 3500);
   }, []);
 
+  useEffect(() => {
+    console.log("introduce", transitionIds);
+  }, [transitionIds]);
+
   useIsInView(ref, handleTransition);
 
   return (

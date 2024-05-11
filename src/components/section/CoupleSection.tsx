@@ -16,11 +16,13 @@ const CoupleSection = ({
 }) => {
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
+  const intervalId = useRef<NodeJS.Timeout | null>(null);
+  const intervalId2 = useRef<NodeJS.Timeout | null>(null);
   const handleTransition = useCallback(() => {
-    const intervalId = setInterval(() => {
+    intervalId.current = setInterval(() => {
       setTransitionIds((prev) => {
         if (prev.length === TITLE.length) {
-          clearInterval(intervalId);
+          clearInterval(intervalId.current!);
           return prev;
         }
         return prev.concat(prev.length);
@@ -28,10 +30,10 @@ const CoupleSection = ({
     }, 200);
 
     setTimeout(() => {
-      const intervalId2 = setInterval(() => {
+      intervalId2.current = setInterval(() => {
         setTransitionIds((prev) => {
           if (prev.length === TITLE.length + 2) {
-            clearInterval(intervalId2);
+            clearInterval(intervalId2.current!);
             return prev;
           }
           return prev.concat(prev.length);
@@ -43,6 +45,15 @@ const CoupleSection = ({
       setTransitionIds((prev) => prev.concat(prev.length));
     }, 3000);
   }, []);
+
+  useEffect(() => {
+    if (transitionIds.length === TITLE.length + 1) {
+      clearTimeout(intervalId.current!);
+      intervalId.current = null;
+      clearTimeout(intervalId2.current!);
+      intervalId2.current = null;
+    }
+  }, [transitionIds]);
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -65,6 +76,10 @@ const CoupleSection = ({
       removeEventListener("click", handler);
     };
   }, [isInView]);
+
+  useEffect(() => {
+    console.log("couple", transitionIds);
+  }, [transitionIds]);
 
   return (
     <section ref={ref} id="couple-section" className="w-full px-24pxr">

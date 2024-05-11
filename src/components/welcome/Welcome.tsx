@@ -10,7 +10,13 @@ import SlideUp from "../SlideUp";
 import Text from "../Text";
 
 const TITLE = ["THE", "WEDDING", "OF", "TAEHOON", "AND", "DANHEE"];
-const Welcome = ({ className }: { className?: string }) => {
+const Welcome = ({
+  className,
+  onNext
+}: {
+  className?: string;
+  onNext: () => void;
+}) => {
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
   const handleTransition = useCallback(() => {
@@ -47,6 +53,12 @@ const Welcome = ({ className }: { className?: string }) => {
       clearTimeout(timeoutId);
     };
   }, [visible]);
+
+  useEffect(() => {
+    if (hidden) {
+      onNext();
+    }
+  }, [hidden, onNext]);
 
   if (hidden) return null;
 

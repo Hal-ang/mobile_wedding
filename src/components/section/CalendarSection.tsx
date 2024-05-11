@@ -67,6 +67,10 @@ const CalendarSection = ({
     };
   }, [isInView]);
 
+  useEffect(() => {
+    console.log("calendar", transitionIds);
+  }, [transitionIds]);
+
   return (
     <section id="calendar-section" ref={ref} className="w-full px-24pxr">
       <Spacing size={50} />
