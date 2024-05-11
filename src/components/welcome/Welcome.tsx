@@ -107,7 +107,7 @@ const Welcome = ({
             <Text
               key={index}
               display="block"
-              className={`pt-10pxr text-50pxr leading-42pxr medium:text-55pxr medium:leading-48pxr regular:text-60pxr regular:leading-54pxr large:text-66pxr large:leading-66pxr   ${BonVivantFont.className}`}
+              className={`pt-10pxr text-50pxr leading-42pxr h-42pxr medium:text-55pxr medium:leading-48pxr medium:h-48pxr regular:text-60pxr regular:leading-54pxr regular:h-54pxr large:text-66pxr large:leading-66pxr large:h-66pxr  ${BonVivantFont.className}`}
             >
               {text}
             </Text>
