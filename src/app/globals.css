@@ -140,16 +140,3 @@ body {
     transform: translateY(0);
   }
 }
-
-.fade-in {
-  animation: fadein 0.8s;
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}

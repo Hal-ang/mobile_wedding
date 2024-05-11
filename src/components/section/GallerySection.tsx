@@ -3,12 +3,13 @@
 import "swiper/css";
 
 import React, {
-  startTransition,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState
 } from "react";
+import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 
 import FadeIn from "../FadeIn";
 import Image from "next/image";
@@ -53,8 +54,6 @@ const GallerySection = ({
     }
   }, [selectedImage]);
 
-  const [progressPercent, setProgressPercent] = useState(0);
-
   const [visibleModal, setVisibleModal] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
@@ -66,6 +65,13 @@ const GallerySection = ({
   }, []);
 
   const { isInView } = useIsInView(ref, handleTransition);
+
+  const progressPercent = useMemo(
+    () => ((selectedImage + 1) / IMAGES.length) * 100,
+    [selectedImage]
+  );
+
+  const [swiper, setSwiper] = useState<SwiperClass>();
 
   return (
     <>
@@ -92,18 +98,30 @@ const GallerySection = ({
         <Spacing size={10} />
 
         <FadeIn show={isInView}>
-          <Image
-            className={`w-full cursor-pointer px-24pxr`}
-            alt="selected-image"
-            loading="eager"
-            src={IMAGES[selectedImage].url}
-            width={764}
-            height={1146}
-            onClick={(e) => {
-              e.stopPropagation();
-              setVisibleModal(true);
-            }}
-          />
+          <Swiper
+            spaceBetween={24}
+            initialSlide={selectedImage}
+            slidesPerView={1}
+            onSlideChange={(slider) => setSelectedImage(slider.activeIndex)}
+            onSwiper={(swiper) => setSwiper(swiper)}
+          >
+            {IMAGES.map((image, index) => (
+              <SwiperSlide key={index}>
+                <Image
+                  className={`w-full cursor-pointer px-24pxr`}
+                  alt="selected-image"
+                  loading="eager"
+                  src={image.url}
+                  width={764}
+                  height={1146}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setVisibleModal(true);
+                  }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
           <Spacing size={16} />
           <div className="w-full px-24pxr">
             <ProgressBar width={`${progressPercent}%`} />
@@ -112,28 +130,6 @@ const GallerySection = ({
           <Spacing size={16} />
           <div
             ref={sliderRef}
-            onScroll={(e) => {
-              e.stopPropagation();
-
-              const target = e.currentTarget;
-
-              const scrolledWidth = target.scrollLeft + target.offsetWidth;
-
-              startTransition(() => {
-                setProgressPercent((scrolledWidth / target.scrollWidth) * 100);
-              });
-            }}
-            onDrag={(e) => {
-              e.stopPropagation();
-
-              const target = e.currentTarget;
-
-              const scrolledWidth = target.scrollLeft + target.offsetWidth;
-
-              startTransition(() => {
-                setProgressPercent((scrolledWidth / target.scrollWidth) * 100);
-              });
-            }}
             className="flex flex-row flex-nowrap gap-4pxr overflow-y-scroll px-24pxr"
           >
             {IMAGES.map((image, index) => (
@@ -141,6 +137,7 @@ const GallerySection = ({
                 key={index}
                 onClick={(e) => {
                   e.stopPropagation();
+                  swiper?.slideTo(index);
                   setSelectedImage(index);
                 }}
                 className={`relative cursor-pointer w-60pxr h-90pxr flex-none`}

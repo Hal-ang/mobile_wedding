@@ -56,7 +56,7 @@ const IntroduceSection = ({
           return prev.concat(prev.length);
         });
       }, 400);
-    }, 1800);
+    }, 1000);
 
     const timeoutID2 = setTimeout(() => {
       intervalId3.current = setInterval(() => {
@@ -68,7 +68,7 @@ const IntroduceSection = ({
           return prev.concat(prev.length);
         });
       }, 900);
-    }, 3500);
+    }, 1800);
   }, []);
 
   useEffect(() => {
