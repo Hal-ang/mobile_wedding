@@ -45,12 +45,12 @@ const CoupleSection = ({
           }
           return prev.concat(prev.length);
         });
-      }, 700);
-    }, 900);
+      }, 500);
+    }, 500);
 
-    setTimeout(() => {
-      setTransitionIds((prev) => prev.concat(prev.length));
-    }, 3000);
+    // setTimeout(() => {
+    //   setTransitionIds((prev) => prev.concat(prev.length));
+    // }, 3000);
   }, [startTransition]);
 
   useEffect(() => {
@@ -80,10 +80,6 @@ const CoupleSection = ({
       removeEventListener("click", handler);
     };
   }, [isInView]);
-
-  useEffect(() => {
-    console.log("couple", transitionIds);
-  }, [transitionIds]);
 
   return (
     <section ref={ref} id="couple-section" className="w-full px-24pxr">

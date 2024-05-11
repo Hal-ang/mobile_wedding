@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { BonVivantFont } from "@/style/fonts";
 import Flex from "../Flex";
@@ -9,6 +9,7 @@ import ScrollArrow from "../../../public/scroll_arrow.svg";
 import SlideUp from "../SlideUp";
 import Text from "../Text";
 import { useInterval } from "@/hooks/useInterval";
+import useIsInView from "@/hooks/useIsInView";
 
 const TITLE = ["THE", "WEDDING", "OF", "TAEHOON", "AND", "DANHEE"];
 const Welcome = ({
@@ -68,18 +69,17 @@ const Welcome = ({
     }
   }, [hidden, onNext]);
 
+  const ref = useRef<HTMLDivElement>(null);
+
+  useIsInView(ref, () => setStartTransition(true));
+
   if (hidden) return null;
 
   return (
     <div
+      ref={ref}
+      onClick={() => setVisible(false)}
       style={{ height: "100svh", transition: "opacity 2s" }}
-      onClick={(e) => {
-        e.stopPropagation();
-
-        if (transitionIds.length === 0) {
-          setStartTransition(true);
-        }
-      }}
       className={`relative  bg-white w-full flex flex-col justify-between overflow-hidden ${className} ${
         visible ? "opacity-100" : "opacity-0"
       }`}
@@ -126,7 +126,7 @@ const Welcome = ({
         show={transitionIds.includes(TITLE.length + 1)}
         className="flex-none mb-40pxr cursor-pointer mx-auto z-10"
       >
-        <ScrollArrow onClick={() => setVisible(false)} />
+        <ScrollArrow />
       </SlideUp>
     </div>
   );
