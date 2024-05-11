@@ -68,102 +68,104 @@ const GallerySection = ({
   const { isInView } = useIsInView(ref, handleTransition);
 
   return (
-    <section
-      ref={ref}
-      id="gallery-section"
-      className="w-full"
-      onClick={(e) => {
-
-        const $address = document.getElementById("address-section");
-        if ($address) {
-          $address.scrollIntoView({ behavior: "smooth" });
-        }
-      }}
-    >
-      <Spacing size={50} />
-      <SlideUp
+    <>
+      <section
+        ref={ref}
+        id="gallery-section"
         className="w-full"
-        disabled={!enabledTransition}
-        show={transitionIds.includes(0)}
+        onClick={(e) => {
+          const $address = document.getElementById("address-section");
+          if ($address) {
+            $address.scrollIntoView({ behavior: "smooth" });
+          }
+        }}
       >
-        <Title>GALLERY</Title>
-      </SlideUp>
-
-      <Spacing size={10} />
-
-      <FadeIn show={isInView}>
-        <Image
-          className={`w-full cursor-pointer`}
-          alt="selected-image"
-          loading="eager"
-          src={IMAGES[selectedImage].url}
-          width={764}
-          height={1146}
-          onClick={(e) => {
-            e.stopPropagation()
-            setVisibleModal(true);
-          }}
-        />
-        <Spacing size={16} />
-        <ProgressBar width={`${progressPercent}%`} />
-
-        <Spacing size={16} />
-        <div
-          ref={sliderRef}
-          onScroll={(e) => {
-            e.stopPropagation();
-
-            const target = e.currentTarget;
-
-            const scrolledWidth = target.scrollLeft + target.offsetWidth;
-
-            startTransition(() => {
-              setProgressPercent((scrolledWidth / target.scrollWidth) * 100);
-            });
-          }}
-          onDrag={(e) => {
-            e.stopPropagation();
-
-            const target = e.currentTarget;
-
-            const scrolledWidth = target.scrollLeft + target.offsetWidth;
-
-            startTransition(() => {
-              setProgressPercent((scrolledWidth / target.scrollWidth) * 100);
-            });
-          }}
-          className="flex flex-row flex-nowrap gap-4pxr overflow-y-scroll px-24pxr"
+        <Spacing size={50} />
+        <SlideUp
+          className="w-full px-24pxr"
+          disabled={!enabledTransition}
+          show={transitionIds.includes(0)}
         >
-          {IMAGES.map((image, index) => (
-            <div
-              key={index}
-              onClick={(e) => {
-                e.stopPropagation()
-                setSelectedImage(index);
-              }}
-              className={`relative cursor-pointer w-60pxr h-90pxr flex-none`}
-            >
-              <Image
-                loading="lazy"
-                key={index}
-                alt="preview"
-                src={image.url}
-                width={120}
-                height={180}
-              />
-              <div
-                className="w-full h-full absolute left-0 top-0"
-                style={
-                  index === selectedImage
-                    ? { boxShadow: `0 0 0 2px #000 inset` }
-                    : undefined
-                }
-              />
-            </div>
-          ))}
-        </div>
-      </FadeIn>
+          <Title>GALLERY</Title>
+        </SlideUp>
 
+        <Spacing size={10} />
+
+        <FadeIn show={isInView}>
+          <Image
+            className={`w-full cursor-pointer px-24pxr`}
+            alt="selected-image"
+            loading="eager"
+            src={IMAGES[selectedImage].url}
+            width={764}
+            height={1146}
+            onClick={(e) => {
+              e.stopPropagation();
+              setVisibleModal(true);
+            }}
+          />
+          <Spacing size={16} />
+          <div className="w-full px-24pxr">
+            <ProgressBar width={`${progressPercent}%`} />
+          </div>
+
+          <Spacing size={16} />
+          <div
+            ref={sliderRef}
+            onScroll={(e) => {
+              e.stopPropagation();
+
+              const target = e.currentTarget;
+
+              const scrolledWidth = target.scrollLeft + target.offsetWidth;
+
+              startTransition(() => {
+                setProgressPercent((scrolledWidth / target.scrollWidth) * 100);
+              });
+            }}
+            onDrag={(e) => {
+              e.stopPropagation();
+
+              const target = e.currentTarget;
+
+              const scrolledWidth = target.scrollLeft + target.offsetWidth;
+
+              startTransition(() => {
+                setProgressPercent((scrolledWidth / target.scrollWidth) * 100);
+              });
+            }}
+            className="flex flex-row flex-nowrap gap-4pxr overflow-y-scroll px-24pxr"
+          >
+            {IMAGES.map((image, index) => (
+              <div
+                key={index}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImage(index);
+                }}
+                className={`relative cursor-pointer w-60pxr h-90pxr flex-none`}
+              >
+                <Image
+                  loading="lazy"
+                  key={index}
+                  alt="preview"
+                  src={image.url}
+                  width={120}
+                  height={180}
+                />
+                <div
+                  className="w-full h-full absolute left-0 top-0"
+                  style={
+                    index === selectedImage
+                      ? { boxShadow: `0 0 0 2px #000 inset` }
+                      : undefined
+                  }
+                />
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+      </section>
       <ImageDetails
         isOpen={visibleModal}
         onClose={() => {
@@ -173,7 +175,7 @@ const GallerySection = ({
         images={IMAGES}
         selectedIndex={selectedImage}
       />
-    </section>
+    </>
   );
 };
 
