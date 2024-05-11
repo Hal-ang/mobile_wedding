@@ -187,6 +187,7 @@ const IntroduceSection = ({
           `오셔서 저희 함께할 날들을 축복해 주시면\n감사하겠습니다.`
         ].map((text, i) => (
           <SlideUp
+            key={i}
             disabled={!enabledTransition}
             show={transitionIds.includes(8 + i)}
           >

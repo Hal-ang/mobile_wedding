@@ -134,6 +134,7 @@ const GallerySection = ({
         >
           {IMAGES.map((image, index) => (
             <div
+              key={index}
               onClick={(e) => {
                 setSelectedImage(index);
               }}

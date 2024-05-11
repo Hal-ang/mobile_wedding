@@ -86,6 +86,7 @@ const CoupleSection = ({
       <Spacing size={50} />
       {TITLE.map((title, index) => (
         <SlideUp
+          key={index}
           disabled={!enabledTransition}
           show={transitionIds.includes(index)}
         >

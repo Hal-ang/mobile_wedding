@@ -61,7 +61,7 @@ const AccountSection = ({ onDone }: { onDone: () => void }) => {
       >
         <Spacing size={80} />
         {TITLE.map((title, i) => (
-          <SlideUp show={transitionIds.includes(i)}>
+          <SlideUp key={title} show={transitionIds.includes(i)}>
             <Title>{title}</Title>
           </SlideUp>
         ))}

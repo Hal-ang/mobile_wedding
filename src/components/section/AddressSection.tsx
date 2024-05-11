@@ -70,7 +70,7 @@ const AddressSection = () => {
       >
         <Spacing size={50} />
         {TITLE.map((title, index) => (
-          <SlideUp show={transitionIds.includes(index)}>
+          <SlideUp key={index} show={transitionIds.includes(index)}>
             <Title>{title}</Title>
           </SlideUp>
         ))}
