@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode, useCallback } from "react";
+import React, { MouseEventHandler, ReactNode, useCallback } from "react";
 
 import Flex from "../Flex";
 import Kakao from "../../../public/kakaoNavi.svg";
@@ -9,7 +9,8 @@ import NaverMap from "../../../public/naverMap.svg";
 import TMap from "../../../public/tMap.svg";
 
 const Navigations = () => {
-  const handleKakaoNavi = useCallback(() => {
+  const handleKakaoNavi: MouseEventHandler = useCallback((e) => {
+    e.preventDefault();
     window.Kakao.Navi.start({
       name: "삼청각 일화당",
       x: 126.98412996463918,
