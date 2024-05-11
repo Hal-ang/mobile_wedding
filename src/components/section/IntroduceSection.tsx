@@ -108,7 +108,6 @@ const IntroduceSection = ({
       <div
         className={` ${BonVivantFont.className}  text-66pxr leading-58pxr medium:text-81pxr medium:leading-71pxr large:text-88pxr large:leading-77pxr w-full gap-`}
       >
-        <Spacing size={70} />
         <SlideUp
           disabled={!enabledTransition}
           show={transitionIds.includes(0)}
