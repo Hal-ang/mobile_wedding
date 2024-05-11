@@ -29,7 +29,7 @@ export default function Home() {
             <GallerySection enabledTransition />
             <Spacing size={50} />
             <AddressSection />
-            <Spacing size={80} />
+            <AccountSection />
 
             {/* <div className="absolute top-0 left-0 w-full h-full z-10">
               <Welcome className={""} />

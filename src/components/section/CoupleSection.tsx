@@ -46,23 +46,28 @@ const CoupleSection = ({
 
   const ref = useRef<HTMLDivElement>(null);
 
-  useIsInView(ref, handleTransition);
+  const { isInView } = useIsInView(ref, handleTransition);
+
+  useEffect(() => {
+    const handler = () => {
+      const $calendar = document.getElementById("calendar-section");
+      if ($calendar) {
+        $calendar.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    if (isInView) {
+      addEventListener("click", handler);
+    } else {
+      removeEventListener("click", handler);
+    }
+    return () => {
+      removeEventListener("click", handler);
+    };
+  }, [isInView]);
 
   return (
-    <section
-      ref={ref}
-      id="couple-section"
-      onClick={() => {
-        if (!transitionIds) return;
-        // TODO : date로 이동
-
-        const $calendar = document.getElementById("calendar-section");
-        if ($calendar) {
-          $calendar.scrollIntoView({ behavior: "smooth" });
-        }
-      }}
-      className="w-full px-24pxr"
-    >
+    <section ref={ref} id="couple-section" className="w-full px-24pxr">
       <Spacing size={50} />
       {TITLE.map((title, index) => (
         <SlideUp

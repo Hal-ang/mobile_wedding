@@ -48,6 +48,11 @@ const AddressSection = () => {
             setTransitionIds((prev) =>
               prev.concat([prev.length, prev.length + 1, prev.length + 2])
             );
+          } else {
+            const $account = document.getElementById("account-section");
+            if ($account) {
+              $account.scrollIntoView({ behavior: "smooth" });
+            }
           }
         }}
       >
@@ -109,7 +114,6 @@ const AddressSection = () => {
       <SlideUp show={transitionIds.includes(TITLE.length + 6)}>
         <Spacing size={80} />
         <RollingBanner />
-        <Spacing size={80} />
       </SlideUp>
     </>
   );

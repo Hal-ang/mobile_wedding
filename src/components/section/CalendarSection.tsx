@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from "react";
 
 import Calendar from "../Calendar";
 import SlideUp from "../SlideUp";
@@ -41,22 +47,28 @@ const CalendarSection = ({
     }, 1000);
   }, []);
 
-  useIsInView(ref, handleTransition);
+  const { isInView } = useIsInView(ref, handleTransition);
+
+  useEffect(() => {
+    const handler = () => {
+      const $gallery = document.getElementById("gallery-section");
+      if ($gallery) {
+        $gallery.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    if (isInView) {
+      addEventListener("click", handler);
+    } else {
+      removeEventListener("click", handler);
+    }
+    return () => {
+      removeEventListener("click", handler);
+    };
+  }, [isInView]);
 
   return (
-    <section
-      id="calendar-section"
-      ref={ref}
-      className="w-full px-24pxr"
-      onClick={() => {
-        if (transitionIds.length === 0) return;
-
-        const $gallery = document.getElementById("gallery-section");
-        if ($gallery) {
-          $gallery.scrollIntoView({ behavior: "smooth" });
-        }
-      }}
-    >
+    <section id="calendar-section" ref={ref} className="w-full px-24pxr">
       <Spacing size={50} />
       {TITLE.map((title, index) => (
         <SlideUp

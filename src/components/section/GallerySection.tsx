@@ -73,8 +73,6 @@ const GallerySection = ({
       id="gallery-section"
       className="w-full"
       onClick={() => {
-        if (transitionIds.length === 0) return;
-
         const $address = document.getElementById("address-section");
         if ($address) {
           $address.scrollIntoView({ behavior: "smooth" });
