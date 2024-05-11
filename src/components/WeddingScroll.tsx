@@ -46,7 +46,7 @@ const WeddingScroll = () => {
             <Spacing size={50} />
             <CalendarSection enabledTransition />
             <Spacing size={50} />
-            <GallerySection enabledTransition />
+            {/* <GallerySection enabledTransition /> */}
             <Spacing size={50} />
             <AddressSection />
             <AccountSection onDone={() => setVisitedAll(true)} />
