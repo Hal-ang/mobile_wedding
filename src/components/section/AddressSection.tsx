@@ -19,7 +19,9 @@ const AddressSection = () => {
 
   const intervalId = useRef<NodeJS.Timeout | null>(null);
   const handleTransition = useCallback(() => {
-    setTransitionIds((prev) => (prev.length === 0 ? [0, 1, 2, 3] : prev));
+    setTimeout(() => {
+      setTransitionIds((prev) => (prev.length === 0 ? [0, 1, 2, 3] : prev));
+    }, 0);
 
     const timeoutId = setTimeout(() => {
       intervalId.current = setInterval(() => {
@@ -32,16 +34,25 @@ const AddressSection = () => {
         });
       }, 200);
     }, 1000);
+
+    const timeoutId2 = setTimeout(() => {
+      setTransitionIds((prev) => prev.concat(prev.length));
+    }, 2000);
+
+    const timeoutId3 = setTimeout(() => {
+      setTransitionIds((prev) =>
+        prev.concat([prev.length, prev.length + 1, prev.length + 2])
+      );
+    }, 2200);
   }, []);
 
   useIsInView(ref, handleTransition);
 
   useEffect(() => {
-    if (transitionIds.length === TITLE.length + 6) {
+    if (transitionIds.length > TITLE.length + 6) {
       clearInterval(intervalId.current!);
       intervalId.current = null;
     }
-    console.log("address", transitionIds);
   }, [transitionIds]);
 
   return (
@@ -51,17 +62,9 @@ const AddressSection = () => {
         id="address-section"
         className="w-full px-24pxr"
         onClick={() => {
-          if (transitionIds.length < 9) {
-            setTransitionIds((prev) => prev.concat(prev.length));
-          } else if (transitionIds.length === 9) {
-            setTransitionIds((prev) =>
-              prev.concat([prev.length, prev.length + 1, prev.length + 2])
-            );
-          } else {
-            const $account = document.getElementById("account-section");
-            if ($account) {
-              $account.scrollIntoView({ behavior: "smooth" });
-            }
+          const $account = document.getElementById("account-section");
+          if ($account) {
+            $account.scrollIntoView({ behavior: "smooth" });
           }
         }}
       >

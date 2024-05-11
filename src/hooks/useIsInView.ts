@@ -1,9 +1,14 @@
 import React, { RefObject, useEffect, useState } from "react";
 
-const useIsInView = (target: RefObject<HTMLElement>, callback?: () => void) => {
+const useIsInView = (
+  target: RefObject<HTMLElement>,
+  callback?: () => void,
+  disabled?: boolean
+) => {
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
+    if (disabled) return;
     if (!target.current) return;
 
     const observer = new IntersectionObserver(
@@ -25,7 +30,7 @@ const useIsInView = (target: RefObject<HTMLElement>, callback?: () => void) => {
     return () => {
       observer.disconnect();
     };
-  }, [callback]);
+  }, [callback, disabled]);
 
   return { isInView };
 };

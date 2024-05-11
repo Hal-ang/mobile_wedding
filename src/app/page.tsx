@@ -9,45 +9,9 @@ import IntroduceSection from "@/components/section/IntroduceSection";
 import KakaoSDK from "@/components/KakaoSDK";
 import RollingBanner from "@/components/RollingBanner";
 import Spacing from "@/components/Spacing";
+import WeddingScroll from "@/components/WeddingScroll";
 import Welcome from "@/components/welcome/Welcome";
 
 export default function Home() {
-  return (
-    <BlockPintch>
-      <KakaoSDK>
-        <main
-          className="w-full absolute min-h-screen overflow-x-hidden flex flex-col large:max-w-[430px] right-2/4"
-          style={{ transform: `translate(50%)` }}
-        >
-          <div className="relative w-full h-full">
-            <div className="absolute top-0 left-0 w-full h-full z-10">
-              <Welcome className={""} />
-            </div>
-            <IntroduceSection enabledTransition />
-            <Spacing size={100} />
-            <CoupleSection enabledTransition />
-            <Spacing size={100} />
-            <CalendarSection enabledTransition />
-            <Spacing size={100} />
-            <GallerySection />
-
-            {/* <Spacing size={100} />
-            <CoupleSection enabledTransition />
-            <Spacing size={100} />
-            <CalendarSection enabledTransition />
-            <Spacing size={100} />
-            <GallerySection />
-            {/* <Spacing size={100} />
-          <AddressSection />
-          <Spacing size={80} />
-          <RollingBanner />
-          <Spacing size={80} />
-          <AccountSection />
-          <Spacing size={100} />
-          <FooterSection /> */}
-          </div>
-        </main>
-      </KakaoSDK>
-    </BlockPintch>
-  );
+  return <WeddingScroll />;
 }

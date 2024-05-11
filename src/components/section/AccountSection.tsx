@@ -13,7 +13,7 @@ import useIsInView from "@/hooks/useIsInView";
 
 const TITLE = ["GIFT", "FOR", "WEDDING", "CEREMONY"];
 
-const AccountSection = () => {
+const AccountSection = ({ onDone }: { onDone: () => void }) => {
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
   const ref = useRef<HTMLDivElement>(null);
@@ -55,6 +55,7 @@ const AccountSection = () => {
               setTransitionIds((prev) => prev.concat(TITLE.length + 2));
               clearTimeout(timeoutId);
             }, 1000);
+            onDone();
           }
         }}
       >

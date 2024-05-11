@@ -21,19 +21,25 @@ const Title = ({ className, ...props }: TextProps) => {
 };
 
 const IntroduceSection = ({
+  visitedWelcome,
   enabledTransition
 }: {
+  visitedWelcome: boolean;
   enabledTransition: boolean;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
+  const intervalId = useRef<NodeJS.Timeout | null>(null);
+  const intervalId2 = useRef<NodeJS.Timeout | null>(null);
+  const intervalId3 = useRef<NodeJS.Timeout | null>(null);
+
   const handleTransition = useCallback(() => {
-    const intervalId = setInterval(() => {
+    intervalId.current = setInterval(() => {
       setTransitionIds((prev) => {
         if (prev.length === 6) {
-          clearInterval(intervalId);
+          clearInterval(intervalId.current!);
           return prev;
         }
         return prev.concat(prev.length);
@@ -41,10 +47,10 @@ const IntroduceSection = ({
     }, 200);
 
     const timeoutID = setTimeout(() => {
-      const intervalId = setInterval(() => {
+      intervalId2.current = setInterval(() => {
         setTransitionIds((prev) => {
           if (prev.length === 8) {
-            clearInterval(intervalId);
+            clearInterval(intervalId.current!);
             return prev;
           }
           return prev.concat(prev.length);
@@ -53,10 +59,10 @@ const IntroduceSection = ({
     }, 1800);
 
     const timeoutID2 = setTimeout(() => {
-      const intervalId = setInterval(() => {
+      intervalId3.current = setInterval(() => {
         setTransitionIds((prev) => {
           if (prev.length === 11) {
-            clearInterval(intervalId);
+            clearInterval(intervalId3.current!);
             return prev;
           }
           return prev.concat(prev.length);
@@ -66,10 +72,14 @@ const IntroduceSection = ({
   }, []);
 
   useEffect(() => {
-    console.log("introduce", transitionIds);
+    if (transitionIds.length === 12) {
+      clearInterval(intervalId.current!);
+      clearInterval(intervalId2.current!);
+      clearInterval(intervalId3.current!);
+    }
   }, [transitionIds]);
 
-  useIsInView(ref, handleTransition);
+  useIsInView(ref, handleTransition, !visitedWelcome);
 
   return (
     <section

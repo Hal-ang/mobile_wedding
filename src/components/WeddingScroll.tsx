@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import AccountSection from "./section/AccountSection";
 import AddressSection from "./section/AddressSection";
 import BlockPintch from "./BlockPintch";
-import BlockScroll from "./BlockScroll";
 import CalendarSection from "./section/CalendarSection";
 import CoupleSection from "./section/CoupleSection";
 import GallerySection from "./section/GallerySection";
@@ -18,6 +17,13 @@ const WeddingScroll = () => {
   const [visitedWelcome, setVisitedWelcome] = useState(false);
   const [visitedAll, setVisitedAll] = useState(false);
 
+  useEffect(() => {
+    if (!visitedWelcome) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [visitedWelcome]);
   return (
     <BlockPintch>
       <KakaoSDK>
@@ -31,7 +37,10 @@ const WeddingScroll = () => {
                 <Welcome onNext={() => setVisitedWelcome(true)} />
               </div>
             )}
-            <IntroduceSection enabledTransition />
+            <IntroduceSection
+              visitedWelcome={visitedWelcome}
+              enabledTransition
+            />
             <Spacing size={50} />
             <CoupleSection enabledTransition />
             <Spacing size={50} />
@@ -40,7 +49,7 @@ const WeddingScroll = () => {
             <GallerySection enabledTransition />
             <Spacing size={50} />
             <AddressSection />
-            <AccountSection />
+            <AccountSection onDone={() => setVisitedAll(true)} />
           </div>
         </main>
       </KakaoSDK>
