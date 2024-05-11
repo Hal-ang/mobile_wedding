@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 
+import SlideUp from "./SlideUp";
 import Text from "./Text";
 
 const Calendar = ({ children }: { children: ReactNode }) => {
@@ -31,11 +32,10 @@ Calendar.Dates = ({
 }) => {
   return Array.from({ length: endDate - startDate - 1 }).map((_, i) => {
     const isActive = i + startDate === activeDate;
-
     return (
       <div
         key={i}
-        className={`w-full  text-center flex justify-center items-center `}
+        className={`w-full text-center flex justify-center items-center `}
       >
         <Text
           display="block"
@@ -46,7 +46,7 @@ Calendar.Dates = ({
               ? "text-[#00AEFF]"
               : ""
           }
-            `}
+          `}
         >
           {startDate + i}
         </Text>

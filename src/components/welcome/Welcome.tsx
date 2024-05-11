@@ -6,49 +6,75 @@ import { BonVivantFont } from "@/style/fonts";
 import Flex from "../Flex";
 import Image from "next/image";
 import ScrollArrow from "../../../public/scroll_arrow.svg";
+import SlideUp from "../SlideUp";
 import Text from "../Text";
 
-const Welcome = () => {
-  const [isInView, setIsInView] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+const TITLE = ["THE", "WEDDING", "OF", "TAEHOON", "AND", "DANHEE"];
+const Welcome = ({
+  className,
+  onNext
+}: {
+  className?: string;
+  onNext: () => void;
+}) => {
+  const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
-  useEffect(() => {
-    if (!ref.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-        } else {
-          setIsInView(false);
+  const handleTransition = useCallback(() => {
+    const intervalId = setInterval(() => {
+      setTransitionIds((prev) => {
+        if (prev.length === TITLE.length) {
+          clearInterval(intervalId);
+          return prev;
         }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(ref.current);
+        return prev.concat(prev.length);
+      });
+    }, 100);
+
+    setTimeout(() => {
+      setTransitionIds((prev) => prev.concat(prev.length));
+    }, 1800);
+
+    setTimeout(() => {
+      setTransitionIds((prev) => prev.concat(prev.length));
+    }, 3000);
   }, []);
+
+  const [visible, setVisible] = useState(true);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const $body = document.getElementById("container");
-    if (!$body) return;
+    if (visible) return;
 
-    if (isInView) {
-      scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      $body.style.overflow = "auto";
+    const timeoutId = setTimeout(() => {
+      setHidden(true);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [visible]);
+
+  useEffect(() => {
+    if (hidden) {
+      onNext();
     }
-  }, [isInView]);
+  }, [hidden, onNext]);
 
-  const handleScroll = useCallback(() => {
-    const $introduce = document.getElementById("introduce");
-    if (!$introduce) return;
-    scrollTo({ top: $introduce.offsetTop, behavior: "smooth" });
-  }, []);
+  if (hidden) return null;
 
   return (
     <div
-      ref={ref}
-      style={{ height: "100svh" }}
-      className="relative  bg-white w-full flex flex-col justify-between overflow-hidden"
+      style={{ height: "100svh", transition: "opacity 2s" }}
+      onClick={(e) => {
+        e.stopPropagation();
+
+        if (transitionIds.length === 0) {
+          handleTransition();
+        }
+      }}
+      className={`relative  bg-white w-full flex flex-col justify-between overflow-hidden ${className} ${
+        visible ? "opacity-100" : "opacity-0"
+      }`}
     >
       <Image
         className="visible regular:invisible absolute bottom-0 left-0"
@@ -68,8 +94,8 @@ const Welcome = () => {
       />
 
       <Flex className={`mt-44pxr z-10`}>
-        {["THE", "WEDDING", "OF", "TAEHOON", "AND", "DANHEE"].map(
-          (text, index) => (
+        {TITLE.map((text, index) => (
+          <SlideUp key={index} show={transitionIds.includes(index)}>
             <Text
               key={index}
               display="block"
@@ -77,19 +103,23 @@ const Welcome = () => {
             >
               {text}
             </Text>
-          )
-        )}
-        <Flex className={`text-15pxr leading-18pxr mt-16pxr`}>
-          <Text display="block">2024.06.08, SATURDAY 16:00</Text>
-          <Text display="block" className="mt-8pxr">
-            SAMCHEONGGAK
-          </Text>
-        </Flex>
+          </SlideUp>
+        ))}
+        <SlideUp show={transitionIds.includes(TITLE.length)}>
+          <Flex className={`text-15pxr leading-18pxr mt-16pxr`}>
+            <Text display="block">2024.06.08, SATURDAY 16:00</Text>
+            <Text display="block" className="mt-8pxr">
+              SAMCHEONGGAK
+            </Text>
+          </Flex>
+        </SlideUp>
       </Flex>
-      <ScrollArrow
-        onClick={handleScroll}
+      <SlideUp
+        show={transitionIds.includes(TITLE.length + 1)}
         className="flex-none mb-40pxr cursor-pointer mx-auto z-10"
-      />
+      >
+        <ScrollArrow onClick={() => setVisible(false)} />
+      </SlideUp>
     </div>
   );
 };

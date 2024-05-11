@@ -8,7 +8,10 @@ const BANNERS = Array.from({ length: 3 }).map(
 );
 const RollingBanner = () => {
   return (
-    <div className="wrapper overflow-hidden will-change-auto">
+    <div
+      id="rolling-banner"
+      className="wrapper overflow-hidden will-change-auto"
+    >
       <div className="slide-container text-white bg-black py-10pxr text-14pxr leading-25pxr will-change-auto">
         <ul className="slide-wrapper will-change-auto">
           <div className="slide-original will-change-auto">

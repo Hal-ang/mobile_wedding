@@ -31,6 +31,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.12.8"],\
           ["@types/react", "npm:18.3.1"],\
           ["@types/react-dom", "npm:18.3.0"],\
+          ["animate.css", "npm:4.1.1"],\
           ["copy-to-clipboard", "npm:3.3.3"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\
@@ -3512,6 +3513,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["animate.css", [\
+      ["npm:4.1.1", {\
+        "packageLocation": "../../.yarn/berry/cache/animate.css-npm-4.1.1-5c526dcd84-10c0.zip/node_modules/animate.css/",\
+        "packageDependencies": [\
+          ["animate.css", "npm:4.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["ansi-regex", [\
       ["npm:5.0.1", {\
         "packageLocation": "../../.yarn/berry/cache/ansi-regex-npm-5.0.1-c963a48615-10c0.zip/node_modules/ansi-regex/",\
@@ -6542,6 +6552,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.12.8"],\
           ["@types/react", "npm:18.3.1"],\
           ["@types/react-dom", "npm:18.3.0"],\
+          ["animate.css", "npm:4.1.1"],\
           ["copy-to-clipboard", "npm:3.3.3"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:cc833f3bdb7e30ff24a4686579d83d5db459192834ee05e1de5a9486a783061e6d28c3db41578939843e656025a09038a05d78aee4559dfc3edd40d3ad6643cd#npm:14.2.3"],\

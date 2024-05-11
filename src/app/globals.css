@@ -121,3 +121,35 @@ body {
     max-height: -webkit-fill-available;
   }
 }
+
+.slideup-container {
+  position: relative;
+  overflow: hidden;
+  width: auto;
+}
+
+.slideup-container .active {
+  animation: slideUp 1.5s;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadein 0.8s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
