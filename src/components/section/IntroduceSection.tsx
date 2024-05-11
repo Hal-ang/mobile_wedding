@@ -70,12 +70,15 @@ const IntroduceSection = ({
     <section
       ref={ref}
       id="introduce"
-      style={{ minHeight: "100vh" }}
+      style={{ height: "100svh" }}
       className="w-full relative"
       onClick={(e) => {
         e.stopPropagation();
-
-        handleTransition();
+        if (!transitionIds) {
+          handleTransition();
+        } else {
+          // TODO : scroll profiles
+        }
       }}
     >
       <Image

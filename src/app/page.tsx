@@ -25,8 +25,8 @@ export default function Home() {
             </div> */}
             <IntroduceSection enabledTransition />
             <Spacing size={100} />
-            {/* <CoupleSection />
-          <Spacing size={100} />
+            <CoupleSection />
+            {/* <Spacing size={100} />
           <CalendarSection />
           <Spacing size={100} />
           <GallerySection />

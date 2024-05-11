@@ -5,7 +5,7 @@ import Title from "./Title";
 
 const CoupleSection = () => {
   return (
-    <section className="w-full px-24pxr">
+    <section className="w-full px-24pxr" style={{ height: "100svh" }}>
       <Title>{`THE\nMARRIAGE\nOF`}</Title>
       <Spacing size={20} />
       <CoupleImage
