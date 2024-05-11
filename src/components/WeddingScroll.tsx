@@ -26,6 +26,10 @@ const WeddingScroll = () => {
       document.body.style.overflow = "auto";
     }
   }, [visitedWelcome, visitedAll]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
   return (
     <BlockPintch>
       <KakaoSDK>
