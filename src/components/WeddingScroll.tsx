@@ -38,7 +38,7 @@ const WeddingScroll = () => {
           style={{ transform: `translate(50%)` }}
         >
           <section id="scroll-container" className="relative w-full h-full">
-            {/* {!visitedWelcome && (
+            {!visitedWelcome && (
               <section className="absolute top-0 left-0 w-full h-full z-10">
                 <Welcome onNext={() => setVisitedWelcome(true)} />
               </section>
@@ -51,12 +51,11 @@ const WeddingScroll = () => {
             <CoupleSection enabledTransition />
             <Spacing size={50} />
             <CalendarSection enabledTransition />
-            <Spacing size={50} /> */}
+            <Spacing size={50} />
             <GallerySection enabledTransition />
-            <Spacing size={100} />
-            {/* <Spacing size={50} />
+            <Spacing size={50} />
             <AddressSection />
-            <AccountSection onDone={() => setVisitedAll(true)} /> */}
+            <AccountSection onDone={() => setVisitedAll(true)} />
           </section>
         </main>
       </KakaoSDK>
