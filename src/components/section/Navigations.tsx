@@ -32,7 +32,7 @@ const Navigations = () => {
       <Link href="https://naver.me/54xSGWUS">
         <NaverMap className="flex-none" />
       </Link>
-      <Link href="tmap://route?goalname=분당서울대병원&goalx=127.122930&goaly=37.351987">
+      <Link href="https://tmap.life/45059ca0">
         <TMap className="flex-none" />
       </Link>
     </Flex>

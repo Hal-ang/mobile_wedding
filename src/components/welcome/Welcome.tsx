@@ -23,7 +23,11 @@ const Welcome = ({
   const [startTransition, setStartTransition] = useState(false);
 
   useInterval(() => {
-    if (!startTransition || transitionIds.length > TITLE.length) {
+    if (
+      !startTransition ||
+      transitionIds.length > TITLE.length ||
+      !imageLoaded
+    ) {
       return;
     }
     setTransitionIds((prev) => {
@@ -72,6 +76,13 @@ const Welcome = ({
   }, [hidden, onNext]);
 
   const ref = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (!imageRef.current) return;
+
+    imageRef.current.complete && setImageLoaded(true);
+  }, [imageRef]);
 
   useIsInView(ref, () => setStartTransition(true));
 
@@ -81,18 +92,22 @@ const Welcome = ({
     <div
       ref={ref}
       onClick={() => setVisible(false)}
-      style={{ height: "100svh", transition: "opacity 2s" }}
+      style={{ height: "100svh", transition: "opacity 1s" }}
       className={`relative  bg-white w-full flex flex-col justify-between overflow-hidden ${className} ${
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
       <img
+        ref={imageRef}
         className="w-full absolute bottom-0 left-0"
         alt="wedding"
         src="/welcome/img_wedding_main.png"
         width={860}
         height={1864}
-        onLoad={() => setImageLoaded(true)}
+        onLoad={() => {
+          console.log("hi");
+          setImageLoaded(true);
+        }}
       />
       <Flex className={`mt-44pxr z-10`}>
         {TITLE.map((text, index) => (

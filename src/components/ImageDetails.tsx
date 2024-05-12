@@ -1,25 +1,25 @@
 "use client";
 
+import { Navigation, Pagination } from "swiper/modules";
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Close from "../../public/close.svg";
 import Flex from "./Flex";
-import Image from "next/image";
 import Portal from "./Portal";
 import Spacing from "./Spacing";
 import Text from "./Text";
 
 const ImageDetails = ({
   images,
-  selectedIndex,
   onClose,
-  isOpen
+  isOpen,
+  selectedIndex
 }: {
   isOpen: boolean;
   images: { url: string }[];
-  selectedIndex: number;
   onClose: () => void;
+  selectedIndex: number;
 }) => {
   const [currentIndex, setCurrentIndex] = useState(selectedIndex);
 
@@ -68,10 +68,14 @@ const ImageDetails = ({
         </Flex>
         <Spacing size={9} />
         <Swiper
+          loop={true}
+          pagination={{
+            clickable: true
+          }}
           spaceBetween={60}
-          initialSlide={selectedIndex}
+          initialSlide={currentIndex}
           slidesPerView={1}
-          onSlideChange={(slider) => setCurrentIndex(slider.activeIndex)}
+          onSlideChange={(slider) => setCurrentIndex(slider.realIndex)}
           onSwiper={(swiper) => console.log(swiper)}
         >
           {images.map((image) => (

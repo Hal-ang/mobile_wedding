@@ -31,9 +31,7 @@ const GallerySection = ({
 }: {
   enabledTransition?: boolean;
 }) => {
-  const [selectedImage, setSelectedImage] = useState(
-    Math.ceil(IMAGES.length / 2 - 1)
-  );
+  const [selectedImage, setSelectedImage] = useState(0);
 
   const sliderRef = useRef<HTMLDivElement>(null);
 
@@ -73,6 +71,10 @@ const GallerySection = ({
 
   const [swiper, setSwiper] = useState<SwiperClass>();
 
+  useEffect(() => {
+    console.log(selectedImage);
+  }, [selectedImage]);
+
   return (
     <>
       <section
@@ -98,29 +100,31 @@ const GallerySection = ({
         <Spacing size={10} />
 
         <FadeIn show={isInView}>
-          <Swiper
-            spaceBetween={24}
-            initialSlide={selectedImage}
-            slidesPerView={1}
-            onSlideChange={(slider) => setSelectedImage(slider.activeIndex)}
-            onSwiper={(swiper) => setSwiper(swiper)}
-          >
-            {IMAGES.map((image, index) => (
-              <SwiperSlide key={index}>
-                <img
-                  className={`w-full cursor-pointer px-24pxr`}
-                  alt="selected-image"
-                  src={image.url}
-                  width={764}
-                  height={1146}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setVisibleModal(true);
-                  }}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div className="w-full px-24pxr">
+            <Swiper
+              loop
+              initialSlide={selectedImage}
+              slidesPerView={1}
+              onSlideChange={(slider) => setSelectedImage(slider.realIndex)}
+              onSwiper={(swiper) => setSwiper(swiper)}
+            >
+              {IMAGES.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <img
+                    className={`w-full cursor-pointer`}
+                    alt="selected-image"
+                    src={image.url}
+                    width={764}
+                    height={1146}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setVisibleModal(true);
+                    }}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
           <Spacing size={16} />
           <div className="w-full px-24pxr">
             <ProgressBar width={`${progressPercent}%`} />
@@ -164,13 +168,13 @@ const GallerySection = ({
         </FadeIn>
       </section>
       <ImageDetails
+        selectedIndex={selectedImage}
         isOpen={visibleModal}
         onClose={() => {
           // router.back();
           setVisibleModal(false);
         }}
         images={IMAGES}
-        selectedIndex={selectedImage}
       />
     </>
   );
