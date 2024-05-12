@@ -56,7 +56,7 @@ const ImageDetails = ({
           <div className="flex-[1_1_0%]"></div>
           <div className="flex-[1_1_0%] text-white font-bold text-15pxr leading-25pxr">
             <Text className="">
-              {currentIndex < 10 ? `0${currentIndex}` : currentIndex}
+              {currentIndex < 10 ? `0${currentIndex + 1}` : currentIndex + 1}
             </Text>
             <Text style={{ color: "rgba(255, 255, 255, 0.3)" }}>
               {" "}

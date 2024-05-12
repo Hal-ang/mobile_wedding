@@ -85,16 +85,9 @@ const Welcome = ({
       }`}
     >
       <img
-        src="/welcome/welcome_wedding.png"
-        width={780}
-        height={1702}
-        className="visible regular:invisible absolute bottom-0 left-0"
-      />
-
-      <img
-        className="invisible regular:visible  w-full absolute bottom-0 left-0"
+        className="w-full absolute bottom-0 left-0"
         alt="wedding"
-        src="/welcome/welcome_wedding_large.png"
+        src="/welcome/img_wedding_main.png"
         width={860}
         height={1864}
       />
