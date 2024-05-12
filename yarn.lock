@@ -2087,13 +2087,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"animate.css@npm:^4.1.1":
-  version: 4.1.1
-  resolution: "animate.css@npm:4.1.1"
-  checksum: 10c0/28fcf5a5f502e4c12186846d22aa1cd63b835955160a97116930c78bff8a89135aa5c57f94010252a29456ada7cfc8ed8791cac02521ec6402befaf883937159
-  languageName: node
-  linkType: hard
-
 "ansi-regex@npm:^5.0.1":
   version: 5.0.1
   resolution: "ansi-regex@npm:5.0.1"
@@ -4661,7 +4654,6 @@ __metadata:
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
-    animate.css: "npm:^4.1.1"
     copy-to-clipboard: "npm:^3.3.3"
     eslint: "npm:^8"
     eslint-config-next: "npm:14.2.3"
