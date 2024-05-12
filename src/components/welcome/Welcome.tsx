@@ -132,9 +132,9 @@ const Welcome = ({
       </Flex>
       <SlideUp
         show={transitionIds.includes(TITLE.length + 1)}
-        className="px-10pxr mb-40pxr cursor-pointer mx-auto z-10"
+        className=" mb-40pxr cursor-pointer mx-auto z-10"
       >
-        <ScrollArrow className="flex-none" />
+        <ScrollArrow className="flex-none mx-5pxr" />
       </SlideUp>
     </div>
   );
