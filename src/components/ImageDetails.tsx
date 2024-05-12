@@ -13,19 +13,15 @@ const ImageDetails = ({
   images,
   onClose,
   isOpen,
-  selectedIndex
+  selectedIndex,
+  onSlideChange
 }: {
   isOpen: boolean;
   images: { url: string }[];
   onClose: () => void;
   selectedIndex: number;
+  onSlideChange: (index: number) => void;
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(selectedIndex);
-
-  useEffect(() => {
-    setCurrentIndex(selectedIndex);
-  }, [selectedIndex]);
-
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -59,7 +55,7 @@ const ImageDetails = ({
           <div className="flex-[1_1_0%]"></div>
           <div className="flex-[1_1_0%] text-white font-bold text-15pxr leading-25pxr">
             <Text className="">
-              {currentIndex < 9 ? `0${currentIndex + 1}` : currentIndex + 1}
+              {selectedIndex < 9 ? `0${selectedIndex + 1}` : selectedIndex + 1}
             </Text>
             <Text style={{ color: "rgba(255, 255, 255, 0.3)" }}>
               {" "}
@@ -71,14 +67,13 @@ const ImageDetails = ({
         </Flex>
         <Spacing size={9} />
         <Swiper
-          loop={true}
+          loop
           pagination={{
             clickable: true
           }}
-          initialSlide={currentIndex}
+          initialSlide={selectedIndex}
           slidesPerView={1}
-          onSlideChange={(slider) => setCurrentIndex(slider.realIndex)}
-          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={(slider) => onSlideChange(slider.realIndex)}
         >
           {images.map((image) => (
             <SwiperSlide key={image.url} className="w-full h-full bg-gray-100">

@@ -105,7 +105,6 @@ const Welcome = ({
         width={860}
         height={1864}
         onLoad={() => {
-          console.log("hi");
           setImageLoaded(true);
         }}
       />

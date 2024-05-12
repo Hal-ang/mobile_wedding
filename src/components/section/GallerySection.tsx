@@ -31,26 +31,30 @@ const GallerySection = ({
 }: {
   enabledTransition?: boolean;
 }) => {
-  const [selectedImage, setSelectedImage] = useState(0);
+  const [selectedIndex, setSlectedIndex] = useState(0);
 
   const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (sliderRef.current) {
-      const slider = sliderRef.current;
-      const target = slider.children[selectedImage] as HTMLElement;
-      const targetWidth = target.offsetWidth;
-      const targetLeft = target.offsetLeft;
-      const targetCenter = targetLeft + targetWidth / 2;
-      const sliderWidth = slider.offsetWidth;
-      const sliderCenter = sliderWidth / 2;
+    if (!sliderRef.current) return;
 
-      slider.scrollTo({
-        left: targetCenter - sliderCenter,
-        behavior: "smooth"
-      });
-    }
-  }, [selectedImage]);
+    const target = document.getElementById(`small-image-${selectedIndex}`);
+
+    if (!target) return;
+    const slider = sliderRef.current;
+
+    const targetWidth = target.offsetWidth;
+    const targetLeft = target.offsetLeft;
+    const targetCenter = targetLeft + targetWidth / 2;
+
+    const sliderWidth = slider.offsetWidth;
+    const sliderCenter = sliderWidth / 2;
+
+    slider.scrollTo({
+      left: targetCenter - sliderCenter,
+      behavior: "smooth"
+    });
+  }, [selectedIndex]);
 
   const [visibleModal, setVisibleModal] = useState(false);
 
@@ -65,25 +69,15 @@ const GallerySection = ({
   const { isInView } = useIsInView(ref, handleTransition);
 
   const progressPercent = useMemo(
-    () => ((selectedImage + 1) / IMAGES.length) * 100,
-    [selectedImage]
+    () => ((selectedIndex + 1) / IMAGES.length) * 100,
+    [selectedIndex]
   );
 
   const [swiper, setSwiper] = useState<SwiperClass>();
 
   return (
     <>
-      <section
-        ref={ref}
-        id="gallery-section"
-        className="w-full"
-        onClick={(e) => {
-          const $address = document.getElementById("address-section");
-          if ($address) {
-            $address.scrollIntoView({ behavior: "smooth" });
-          }
-        }}
-      >
+      <section ref={ref} id="gallery-section" className="w-full">
         <Spacing size={50} />
         <SlideUp
           className="w-full px-24pxr"
@@ -99,9 +93,9 @@ const GallerySection = ({
           <div className="w-full px-24pxr">
             <Swiper
               loop
-              initialSlide={selectedImage}
+              initialSlide={selectedIndex}
               slidesPerView={1}
-              onSlideChange={(slider) => setSelectedImage(slider.realIndex)}
+              onSlideChange={(slider) => setSlectedIndex(slider.realIndex)}
               onSwiper={(swiper) => setSwiper(swiper)}
             >
               {IMAGES.map((image, index) => (
@@ -133,11 +127,11 @@ const GallerySection = ({
           >
             {IMAGES.map((image, index) => (
               <div
+                id={`small-image-${index}`}
                 key={index}
                 onClick={(e) => {
                   e.stopPropagation();
-                  swiper?.slideTo(index);
-                  setSelectedImage(index);
+                  swiper?.slideToLoop(index);
                 }}
                 className={`relative cursor-pointer w-60pxr h-90pxr flex-none`}
               >
@@ -153,7 +147,7 @@ const GallerySection = ({
                 <div
                   className="w-full h-full absolute left-0 top-0"
                   style={
-                    index === selectedImage
+                    index === selectedIndex
                       ? { boxShadow: `0 0 0 2px #000 inset` }
                       : undefined
                   }
@@ -164,15 +158,19 @@ const GallerySection = ({
         </FadeIn>
       </section>
 
-      <ImageDetails
-        selectedIndex={selectedImage}
-        isOpen={visibleModal}
-        onClose={() => {
-          // router.back();
-          setVisibleModal(false);
-        }}
-        images={IMAGES}
-      />
+      {visibleModal && (
+        <ImageDetails
+          onSlideChange={(index) => {
+            swiper?.slideToLoop(index);
+          }}
+          selectedIndex={selectedIndex}
+          isOpen={visibleModal}
+          onClose={() => {
+            setVisibleModal(false);
+          }}
+          images={IMAGES}
+        />
+      )}
     </>
   );
 };
