@@ -11,13 +11,13 @@ interface CoupleImageProps {
 const CoupleImage = ({ url, person }: CoupleImageProps) => {
   return (
     <div className="relative w-full">
-      <Image
+      <img
         src={url}
         width={382}
         height={201}
         alt="couple-profile"
         className="w-auto"
-      />
+      ></img>
 
       <div className="w-full p-10pxr absolute bottom-0">
         <Flex

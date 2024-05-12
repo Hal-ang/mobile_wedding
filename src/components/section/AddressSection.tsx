@@ -109,6 +109,7 @@ const AddressSection = () => {
         <Spacing size={20} />
         <SlideUp id="map" show={transitionIds.includes(TITLE.length + 4)}>
           <Image
+            quality={100}
             src={"/map.png"}
             alt="map"
             width={382}

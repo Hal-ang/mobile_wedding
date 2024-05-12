@@ -98,6 +98,7 @@ const IntroduceSection = ({
       }}
     >
       <Image
+        quality={100}
         src={"/gradient.png"}
         layout="fill"
         objectFit="cover"
