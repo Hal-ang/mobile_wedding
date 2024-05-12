@@ -38,14 +38,14 @@ const ImageDetails = ({
       <div
         className="fixed w-full top-0 left-2/4 large:max-w-[430px]"
         style={{
-          minHeight: "100svh",
+          minHeight: "100vh",
           backgroundColor: "rgba(0, 0, 0, 0.9)",
           transform: `translate(-50%)`
         }}
       ></div>
       <div
         className="fixed w-full z-20 left-2/4  large:max-w-[430px]"
-        style={{ transform: `translate(-50%)`, minHeight: "100svh" }}
+        style={{ transform: `translate(-50%)`, minHeight: "100vh" }}
       >
         <Flex
           className=" w-full py-4pxr px-10pxr"
