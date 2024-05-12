@@ -23,7 +23,7 @@ const AddressSection = () => {
       setTransitionIds((prev) => (prev.length === 0 ? [0, 1, 2, 3] : prev));
     }, 0);
 
-    const timeoutId = setTimeout(() => {
+    setTimeout(() => {
       intervalId.current = setInterval(() => {
         setTransitionIds((prev) => {
           if (prev.length === TITLE.length + 3) {
@@ -35,11 +35,11 @@ const AddressSection = () => {
       }, 200);
     }, 1000);
 
-    const timeoutId2 = setTimeout(() => {
+    setTimeout(() => {
       setTransitionIds((prev) => prev.concat(prev.length));
     }, 2000);
 
-    const timeoutId3 = setTimeout(() => {
+    setTimeout(() => {
       setTransitionIds((prev) =>
         prev.concat([prev.length, prev.length + 1, prev.length + 2])
       );
@@ -57,17 +57,7 @@ const AddressSection = () => {
 
   return (
     <>
-      <section
-        ref={ref}
-        id="address-section"
-        className="w-full px-24pxr"
-        onClick={() => {
-          const $account = document.getElementById("account-section");
-          if ($account) {
-            $account.scrollIntoView({ behavior: "smooth" });
-          }
-        }}
-      >
+      <section ref={ref} id="address-section" className="w-full px-24pxr">
         <Spacing size={50} />
         {TITLE.map((title, index) => (
           <SlideUp key={index} show={transitionIds.includes(index)}>

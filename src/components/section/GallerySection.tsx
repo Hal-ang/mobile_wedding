@@ -26,11 +26,7 @@ const getGalleryImageLoader = (number: number) => {
 const IMAGES = Array.from({ length: 18 }, (_, i) => ({
   url: getGalleryImageLoader(i + 1)
 }));
-const GallerySection = ({
-  enabledTransition = false
-}: {
-  enabledTransition?: boolean;
-}) => {
+const GallerySection = () => {
   const [selectedIndex, setSlectedIndex] = useState(0);
 
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -79,11 +75,7 @@ const GallerySection = ({
     <>
       <section ref={ref} id="gallery-section" className="w-full">
         <Spacing size={50} />
-        <SlideUp
-          className="w-full px-24pxr"
-          disabled={!enabledTransition}
-          show={transitionIds.includes(0)}
-        >
+        <SlideUp className="w-full px-24pxr" show={transitionIds.includes(0)}>
           <Title>GALLERY</Title>
         </SlideUp>
 

@@ -10,11 +10,7 @@ import { useInterval } from "@/hooks/useInterval";
 import useIsInView from "@/hooks/useIsInView";
 
 const TITLE = ["THE", "MARRIAGE", "OF"];
-const CoupleSection = ({
-  enabledTransition
-}: {
-  enabledTransition: boolean;
-}) => {
+const CoupleSection = () => {
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
   const intervalId = useRef<NodeJS.Timeout | null>(null);
@@ -57,44 +53,19 @@ const CoupleSection = ({
 
   const ref = useRef<HTMLDivElement>(null);
 
-  const { isInView } = useIsInView(ref, () => setStartTransition(true));
-
-  useEffect(() => {
-    const handler = () => {
-      const $calendar = document.getElementById("calendar-section");
-      if ($calendar) {
-        $calendar.scrollIntoView({ behavior: "smooth" });
-      }
-    };
-
-    if (isInView) {
-      addEventListener("click", handler);
-    } else {
-      removeEventListener("click", handler);
-    }
-    return () => {
-      removeEventListener("click", handler);
-    };
-  }, [isInView]);
+  useIsInView(ref, () => setStartTransition(true));
 
   return (
     <section ref={ref} id="couple-section" className="w-full px-24pxr">
       <Spacing size={50} />
       {TITLE.map((title, index) => (
-        <SlideUp
-          key={index}
-          disabled={!enabledTransition}
-          show={transitionIds.includes(index)}
-        >
+        <SlideUp key={index} show={transitionIds.includes(index)}>
           <Title display="block">{title}</Title>
         </SlideUp>
       ))}
 
       <Spacing size={20} />
-      <SlideUp
-        disabled={!enabledTransition}
-        show={transitionIds.includes(TITLE.length)}
-      >
+      <SlideUp show={transitionIds.includes(TITLE.length)}>
         <CoupleImage
           url="/profile/profile_taehoon.jpg"
           person={{ name: "구태훈", desc: "환수, 성순의 아들" }}
@@ -102,10 +73,7 @@ const CoupleSection = ({
 
         <Spacing size={6} />
       </SlideUp>
-      <SlideUp
-        disabled={!enabledTransition}
-        show={transitionIds.includes(TITLE.length + 1)}
-      >
+      <SlideUp show={transitionIds.includes(TITLE.length + 1)}>
         <CoupleImage
           url="/profile/profile_danhee.jpg"
           person={{ name: "김단희", desc: "형국, 희영의 딸" }}

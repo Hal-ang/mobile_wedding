@@ -9,7 +9,6 @@ import SlideUp from "../SlideUp";
 import Spacing from "../Spacing";
 import Text from "../Text";
 import Title from "./Title";
-import { start } from "repl";
 import { useInterval } from "@/hooks/useInterval";
 import useIsInView from "@/hooks/useIsInView";
 
@@ -28,7 +27,7 @@ const AccountSection = ({ onDone }: { onDone: () => void }) => {
       return prev.concat(prev.length);
     });
   }, 200);
-  const { isInView } = useIsInView(ref, () => setStartTransition(true));
+  useIsInView(ref, () => setStartTransition(true));
 
   const [callTimeout, setCallTimeout] = useState(false);
 

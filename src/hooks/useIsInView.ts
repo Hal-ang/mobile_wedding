@@ -22,7 +22,7 @@ const useIsInView = (
           }
         });
       },
-      { threshold: 0.7 }
+      { threshold: 0.4 }
     );
 
     observer.observe(target.current);

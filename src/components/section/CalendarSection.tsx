@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Calendar from "../Calendar";
 import SlideUp from "../SlideUp";
@@ -16,11 +10,7 @@ import { useInterval } from "@/hooks/useInterval";
 import useIsInView from "@/hooks/useIsInView";
 
 const TITLE = ["2024.06.08", "SATURDAY", "PM 4:00"];
-const CalendarSection = ({
-  enabledTransition = false
-}: {
-  enabledTransition?: boolean;
-}) => {
+const CalendarSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
@@ -60,35 +50,13 @@ const CalendarSection = ({
     }
   }, [transitionIds]);
 
-  const { isInView } = useIsInView(ref, () => setStartTransition(true));
-
-  useEffect(() => {
-    const handler = () => {
-      const $gallery = document.getElementById("gallery-section");
-      if ($gallery) {
-        $gallery.scrollIntoView({ behavior: "smooth" });
-      }
-    };
-
-    if (isInView) {
-      addEventListener("click", handler);
-    } else {
-      removeEventListener("click", handler);
-    }
-    return () => {
-      removeEventListener("click", handler);
-    };
-  }, [isInView]);
+  useIsInView(ref, () => setStartTransition(true));
 
   return (
     <section id="calendar-section" ref={ref} className="w-full px-24pxr">
       <Spacing size={50} />
       {TITLE.map((title, index) => (
-        <SlideUp
-          key={index}
-          disabled={!enabledTransition}
-          show={transitionIds.includes(index)}
-        >
+        <SlideUp key={index} show={transitionIds.includes(index)}>
           <Title key={title} display="block">
             {title}
           </Title>
@@ -97,11 +65,7 @@ const CalendarSection = ({
 
       <Spacing size={15} />
 
-      <SlideUp
-        disabled={!enabledTransition}
-        show={transitionIds.includes(TITLE.length)}
-        className="w-full"
-      >
+      <SlideUp show={transitionIds.includes(TITLE.length)} className="w-full">
         <Calendar>
           <Calendar.Days />
 

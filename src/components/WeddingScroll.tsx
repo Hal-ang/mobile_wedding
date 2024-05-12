@@ -30,6 +30,7 @@ const WeddingScroll = () => {
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
+
   return (
     <BlockPintch>
       <KakaoSDK>
@@ -43,16 +44,13 @@ const WeddingScroll = () => {
                 <Welcome onNext={() => setVisitedWelcome(true)} />
               </section>
             )}
-            <IntroduceSection
-              visitedWelcome={visitedWelcome}
-              enabledTransition
-            />
+            <IntroduceSection visitedWelcome={visitedWelcome} />
             <Spacing size={50} />
-            <CoupleSection enabledTransition />
+            <CoupleSection />
             <Spacing size={50} />
-            <CalendarSection enabledTransition />
+            <CalendarSection />
             <Spacing size={50} />
-            <GallerySection enabledTransition />
+            <GallerySection />
             <Spacing size={50} />
             <AddressSection />
             <AccountSection onDone={() => setVisitedAll(true)} />

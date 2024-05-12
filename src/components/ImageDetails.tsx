@@ -28,6 +28,10 @@ const ImageDetails = ({
     } else {
       document.body.style.overflow = "auto";
     }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -68,9 +72,6 @@ const ImageDetails = ({
         <Spacing size={9} />
         <Swiper
           loop
-          pagination={{
-            clickable: true
-          }}
           initialSlide={selectedIndex}
           slidesPerView={1}
           onSlideChange={(slider) => onSlideChange(slider.realIndex)}

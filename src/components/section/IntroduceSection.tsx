@@ -20,13 +20,7 @@ const Title = ({ className, ...props }: TextProps) => {
   );
 };
 
-const IntroduceSection = ({
-  visitedWelcome,
-  enabledTransition
-}: {
-  visitedWelcome: boolean;
-  enabledTransition: boolean;
-}) => {
+const IntroduceSection = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
@@ -87,15 +81,6 @@ const IntroduceSection = ({
       id="introduce"
       style={{ minHeight: "100vh" }}
       className="w-full relative"
-      onClick={(e) => {
-        e.stopPropagation();
-        if (transitionIds.length !== 0) {
-          const $couple = document.getElementById("couple-section");
-          if ($couple) {
-            $couple.scrollIntoView({ behavior: "smooth" });
-          }
-        }
-      }}
     >
       <Image
         quality={100}
@@ -110,7 +95,6 @@ const IntroduceSection = ({
         className={` ${BonVivantFont.className}  text-66pxr leading-58pxr medium:text-81pxr medium:leading-71pxr large:text-88pxr large:leading-77pxr w-full gap-`}
       >
         <SlideUp
-          disabled={!enabledTransition}
           show={transitionIds.includes(0)}
           style={{ transform: "translate(-0.75rem)" }}
         >
@@ -119,14 +103,12 @@ const IntroduceSection = ({
         <Spacing size={8} />
         <Flex direction="row" align="center" justify="end">
           <SlideUp
-            disabled={!enabledTransition}
             show={transitionIds.includes(6)}
             className="flex-none  w-44pxr h-44pxr medium:w-48pxr medium:h-48pxr large:w-52pxr large:h-52pxr"
           >
             <Glare />
           </SlideUp>
           <SlideUp
-            disabled={!enabledTransition}
             show={transitionIds.includes(1)}
             style={{ transform: "translate(0.75rem)" }}
           >
@@ -137,7 +119,6 @@ const IntroduceSection = ({
         </Flex>
         <Spacing size={8} />
         <SlideUp
-          disabled={!enabledTransition}
           show={transitionIds.includes(2)}
           style={{ transform: "translate(-0.75rem)" }}
         >
@@ -145,7 +126,6 @@ const IntroduceSection = ({
         </SlideUp>
         <Spacing size={8} />
         <SlideUp
-          disabled={!enabledTransition}
           show={transitionIds.includes(3)}
           className="w-full"
           style={{ transform: "translate(0.75rem)" }}
@@ -156,16 +136,12 @@ const IntroduceSection = ({
         </SlideUp>
         <Spacing size={8} />
         <Flex direction="row" align="center" justify="start">
-          <SlideUp
-            disabled={!enabledTransition}
-            show={transitionIds.includes(4)}
-          >
+          <SlideUp show={transitionIds.includes(4)}>
             <Title display="block" style={{ transform: "translate(-0.75rem)" }}>
               WITH
             </Title>
           </SlideUp>
           <SlideUp
-            disabled={!enabledTransition}
             show={transitionIds.includes(7)}
             className="flex-none  w-44pxr h-44pxr medium:w-48pxr medium:h-48pxr large:w-52pxr large:h-52pxr"
           >
@@ -173,7 +149,7 @@ const IntroduceSection = ({
           </SlideUp>
         </Flex>
         <Spacing size={8} />
-        <SlideUp disabled={!enabledTransition} show={transitionIds.includes(5)}>
+        <SlideUp show={transitionIds.includes(5)}>
           <Flex direction="row" align="start" justify="end">
             <Title style={{ transform: "translate(0.55rem)" }}>GLADNESS</Title>
           </Flex>
@@ -186,11 +162,7 @@ const IntroduceSection = ({
           `우리의 가장 큰 바람은\n슬픔은 슬픔대로, 기쁨은 기쁨대로\n함께 흘려보내며\n오래오래 함께하는 것입니다.`,
           `오셔서 저희 함께할 날들을 축복해 주시면\n감사하겠습니다.`
         ].map((text, i) => (
-          <SlideUp
-            key={i}
-            disabled={!enabledTransition}
-            show={transitionIds.includes(8 + i)}
-          >
+          <SlideUp key={i} show={transitionIds.includes(8 + i)}>
             <Text
               key={text}
               display="block"
