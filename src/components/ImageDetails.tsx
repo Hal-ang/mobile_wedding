@@ -36,10 +36,16 @@ const ImageDetails = ({
   return (
     <Portal>
       <div
-        className="fixed h-screen w-full top-0 left-0 "
-        style={{ backgroundColor: "rgba(0, 0, 0, 0.9)" }}
+        className="fixed min-h-screen w-full top-0 left-2/4 large:max-w-[430px]"
+        style={{
+          backgroundColor: "rgba(0, 0, 0, 0.9)",
+          transform: `translate(-50%)`
+        }}
       ></div>
-      <div className="fixed top-0 left-0 w-full h-screen z-20">
+      <div
+        className="fixed w-full min-h-screen z-20 left-2/4  large:max-w-[430px]"
+        style={{ transform: `translate(-50%)` }}
+      >
         <Flex
           className=" w-full py-4pxr px-10pxr"
           direction="row"
