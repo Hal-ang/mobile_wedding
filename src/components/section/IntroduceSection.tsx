@@ -85,7 +85,7 @@ const IntroduceSection = ({
     <section
       ref={ref}
       id="introduce"
-      style={{ height: "100svh" }}
+      style={{ minHeight: "100vh" }}
       className="w-full relative"
       onClick={(e) => {
         e.stopPropagation();

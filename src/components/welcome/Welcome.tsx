@@ -31,8 +31,10 @@ const Welcome = ({
     });
   }, 100);
 
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   useEffect(() => {
-    if (!startTransition) return;
+    if (!startTransition || !imageLoaded) return;
 
     const timeout = setTimeout(() => {
       setTransitionIds((prev) => prev.concat(prev.length));
@@ -46,7 +48,7 @@ const Welcome = ({
       clearTimeout(timeout);
       clearTimeout(timeout2);
     };
-  }, [startTransition]);
+  }, [startTransition, imageLoaded]);
 
   const [visible, setVisible] = useState(true);
   const [hidden, setHidden] = useState(false);
@@ -61,7 +63,7 @@ const Welcome = ({
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [visible]);
+  }, [visible, imageLoaded]);
 
   useEffect(() => {
     if (hidden) {
@@ -90,6 +92,7 @@ const Welcome = ({
         src="/welcome/img_wedding_main.png"
         width={860}
         height={1864}
+        onLoad={() => setImageLoaded(true)}
       />
       <Flex className={`mt-44pxr z-10`}>
         {TITLE.map((text, index) => (

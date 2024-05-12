@@ -47,10 +47,6 @@ const CoupleSection = ({
         });
       }, 500);
     }, 500);
-
-    // setTimeout(() => {
-    //   setTransitionIds((prev) => prev.concat(prev.length));
-    // }, 3000);
   }, [startTransition]);
 
   useEffect(() => {
