@@ -71,10 +71,6 @@ const GallerySection = ({
 
   const [swiper, setSwiper] = useState<SwiperClass>();
 
-  useEffect(() => {
-    console.log(selectedImage);
-  }, [selectedImage]);
-
   return (
     <>
       <section
@@ -167,6 +163,7 @@ const GallerySection = ({
           </div>
         </FadeIn>
       </section>
+
       <ImageDetails
         selectedIndex={selectedImage}
         isOpen={visibleModal}

@@ -1,6 +1,5 @@
 "use client";
 
-import { Navigation, Pagination } from "swiper/modules";
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -22,6 +21,10 @@ const ImageDetails = ({
   selectedIndex: number;
 }) => {
   const [currentIndex, setCurrentIndex] = useState(selectedIndex);
+
+  useEffect(() => {
+    setCurrentIndex(selectedIndex);
+  }, [selectedIndex]);
 
   useEffect(() => {
     if (isOpen) {
@@ -72,7 +75,6 @@ const ImageDetails = ({
           pagination={{
             clickable: true
           }}
-          spaceBetween={60}
           initialSlide={currentIndex}
           slidesPerView={1}
           onSlideChange={(slider) => setCurrentIndex(slider.realIndex)}
