@@ -62,7 +62,7 @@ const Welcome = ({
 
     const timeoutId = setTimeout(() => {
       setHidden(true);
-    }, 1200);
+    }, 1100);
 
     return () => {
       clearTimeout(timeoutId);
