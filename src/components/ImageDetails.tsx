@@ -69,7 +69,13 @@ const ImageDetails = ({
         >
           {images.map((image) => (
             <SwiperSlide key={image.url} className="w-full h-full bg-gray-100">
-              <Image alt="image" src={image.url} width={764} height={1146} />
+              <Image
+                quality={100}
+                alt="image"
+                src={image.url}
+                width={764}
+                height={1146}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

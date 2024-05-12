@@ -85,19 +85,21 @@ const Welcome = ({
       }`}
     >
       <Image
+        quality={100}
         className="visible regular:invisible absolute bottom-0 left-0"
-        width={390}
-        height={851}
+        width={780}
+        height={1702}
         alt="wedding"
         src="/welcome/welcome_wedding.png"
       />
 
       <Image
+        quality={100}
         className="invisible regular:visible  w-full absolute bottom-0 left-0"
         alt="wedding"
         src="/welcome/welcome_wedding_large.png"
-        width={430}
-        height={932}
+        width={860}
+        height={1864}
         priority
       />
 

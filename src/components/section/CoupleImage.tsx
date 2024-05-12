@@ -12,6 +12,7 @@ const CoupleImage = ({ url, person }: CoupleImageProps) => {
   return (
     <div className="relative w-full">
       <Image
+        quality={100}
         src={url}
         width={382}
         height={201}

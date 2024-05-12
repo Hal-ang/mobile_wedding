@@ -108,6 +108,7 @@ const GallerySection = ({
             {IMAGES.map((image, index) => (
               <SwiperSlide key={index}>
                 <Image
+                  quality={100}
                   className={`w-full cursor-pointer px-24pxr`}
                   alt="selected-image"
                   loading="eager"
@@ -143,6 +144,7 @@ const GallerySection = ({
                 className={`relative cursor-pointer w-60pxr h-90pxr flex-none`}
               >
                 <Image
+                  quality={100}
                   loading="lazy"
                   key={index}
                   alt="preview"
