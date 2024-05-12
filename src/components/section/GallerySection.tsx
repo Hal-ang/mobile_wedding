@@ -107,11 +107,9 @@ const GallerySection = ({
           >
             {IMAGES.map((image, index) => (
               <SwiperSlide key={index}>
-                <Image
-                  quality={100}
+                <img
                   className={`w-full cursor-pointer px-24pxr`}
                   alt="selected-image"
-                  loading="eager"
                   src={image.url}
                   width={764}
                   height={1146}

@@ -84,25 +84,20 @@ const Welcome = ({
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <Image
-        quality={100}
-        className="visible regular:invisible absolute bottom-0 left-0"
+      <img
+        src="/welcome/welcome_wedding.png"
         width={780}
         height={1702}
-        alt="wedding"
-        src="/welcome/welcome_wedding.png"
+        className="visible regular:invisible absolute bottom-0 left-0"
       />
 
-      <Image
-        quality={100}
+      <img
         className="invisible regular:visible  w-full absolute bottom-0 left-0"
         alt="wedding"
         src="/welcome/welcome_wedding_large.png"
         width={860}
         height={1864}
-        priority
       />
-
       <Flex className={`mt-44pxr z-10`}>
         {TITLE.map((text, index) => (
           <SlideUp key={index} show={transitionIds.includes(index)}>
