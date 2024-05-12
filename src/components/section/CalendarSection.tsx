@@ -54,7 +54,6 @@ const CalendarSection = () => {
 
   return (
     <section id="calendar-section" ref={ref} className="w-full px-24pxr">
-      <Spacing size={50} />
       {TITLE.map((title, index) => (
         <SlideUp key={index} show={transitionIds.includes(index)}>
           <Title key={title} display="block">

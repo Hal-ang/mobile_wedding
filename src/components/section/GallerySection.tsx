@@ -74,7 +74,6 @@ const GallerySection = () => {
   return (
     <>
       <section ref={ref} id="gallery-section" className="w-full">
-        <Spacing size={50} />
         <SlideUp className="w-full px-24pxr" show={transitionIds.includes(0)}>
           <Title>GALLERY</Title>
         </SlideUp>

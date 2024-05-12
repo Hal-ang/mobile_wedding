@@ -45,14 +45,15 @@ const WeddingScroll = () => {
               </section>
             )}
             <IntroduceSection visitedWelcome={visitedWelcome} />
-            <Spacing size={50} />
+            <Spacing size={100} />
             <CoupleSection />
-            <Spacing size={50} />
+            <Spacing size={100} />
             <CalendarSection />
-            <Spacing size={50} />
+            <Spacing size={100} />
             <GallerySection />
-            <Spacing size={50} />
+            <Spacing size={100} />
             <AddressSection />
+            <Spacing size={80} />
             <AccountSection onDone={() => setVisitedAll(true)} />
           </section>
         </main>

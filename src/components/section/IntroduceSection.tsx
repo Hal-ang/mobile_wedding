@@ -76,12 +76,7 @@ const IntroduceSection = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
   useIsInView(ref, handleTransition, !visitedWelcome);
 
   return (
-    <section
-      ref={ref}
-      id="introduce"
-      style={{ minHeight: "100vh" }}
-      className="w-full relative"
-    >
+    <section ref={ref} id="introduce" className="w-full relative">
       <Image
         quality={100}
         src={"/gradient.png"}

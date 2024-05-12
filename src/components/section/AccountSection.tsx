@@ -66,7 +66,6 @@ const AccountSection = ({ onDone }: { onDone: () => void }) => {
   return (
     <>
       <section ref={ref} id="account-section" className="w-full px-24pxr">
-        <Spacing size={80} />
         {TITLE.map((title, i) => (
           <SlideUp key={title} show={transitionIds.includes(i)}>
             <Title>{title}</Title>

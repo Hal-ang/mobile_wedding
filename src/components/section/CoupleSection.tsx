@@ -57,7 +57,6 @@ const CoupleSection = () => {
 
   return (
     <section ref={ref} id="couple-section" className="w-full px-24pxr">
-      <Spacing size={50} />
       {TITLE.map((title, index) => (
         <SlideUp key={index} show={transitionIds.includes(index)}>
           <Title display="block">{title}</Title>
