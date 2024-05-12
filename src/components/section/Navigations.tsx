@@ -26,6 +26,9 @@ const Navigations = () => {
       justify="flex-end"
       align="center"
       className="gap-x-8pxr"
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
     >
       <Kakao onClick={handleKakaoNavi} className="flex-none" />
 
