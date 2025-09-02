@@ -11,7 +11,9 @@
 
 ** 모바일 청첩장
 
-URL : https://www.taehoondanhee.com
+URL : ~~https://www.taehoondanhee.com~~ 도메인 만료
+
+현재 URL : https://0608-wedding.vercel.app
 
 실제 모바일 청첩장을 위한 프로젝트입니다.
 
